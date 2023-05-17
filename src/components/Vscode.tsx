@@ -16,10 +16,6 @@ interface ShowFolders {
   [key: string]: boolean;
 }
 
-interface Code {
-  [key: string]: string;
-}
-
 export const Vscode: React.FC = () => {
   const [showFolders, setShowFolders] = useState<ShowFolders>({
     src: true,

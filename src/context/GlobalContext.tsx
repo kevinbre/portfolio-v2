@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 interface GlobalContextProps {
   siteColor: string;
@@ -15,12 +15,12 @@ const INITIAL_CONTEXT: GlobalContextProps = {
 
 export const GlobalContext = createContext(INITIAL_CONTEXT);
 
-const colorsNumber: { [key: number]: string } = {
+/* const colorsNumber: { [key: number]: string } = {
   1: "green",
   2: "blue",
   3: "yellow",
   4: "purple",
-};
+}; */
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [siteColor, setSiteColor] = useState("yellow");
