@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const Knowledge: React.FC<Props> = ({ knowledgeRef }) => {
-  const { siteColor } = useContext(GlobalContext);
-
   return (
     <SectionLayout title="Conocimientos" reference={knowledgeRef}>
       <p className="text-medium">Conocimientos tecnologias</p>
@@ -28,7 +26,7 @@ export const Knowledge: React.FC<Props> = ({ knowledgeRef }) => {
                 width={100}
                 height={100}
                 alt={`${technology.name} icon`}
-                className={`hover:scale-95 transition-all hover:shadow-md rounded-3xl hover:shadow-${siteColor}-400`}
+                className={`hover:scale-95 transition-all hover:shadow-md rounded-3xl`}
               />
               <h3 className="text-white">{technology.name}</h3>
             </span>

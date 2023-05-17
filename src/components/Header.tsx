@@ -10,11 +10,9 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ headerRef }) => {
-  const { siteColor } = useContext(GlobalContext);
+  const { colorTheme } = useContext(GlobalContext);
 
-  const hoverText = `hover:text-${siteColor}-500`;
-
-  const textEffect = `transition-all hover:text-7xl cursor-default ${hoverText}`;
+  const textEffect = `transition-all hover:text-7xl cursor-default ${colorTheme.hover.text}`;
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center"
@@ -34,7 +32,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
             </div>
           </div>
 
-          <span className={`text-${siteColor}-400 text-xl w-full text-start`}>
+          <span className={`${colorTheme.text} text-xl w-full text-start`}>
             Frontend Developer
           </span>
         </div>

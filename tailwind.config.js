@@ -8,4 +8,7 @@ export default {
     extend: {},
   },
   plugins: [],
+  darkMode: ['class', '[data-mode="dark"]'],
+  yellowMode: ['class', '[data-mode="yellow"]'],
+  purpleMode: ['class', '[data-mode="purple"]'],
 }

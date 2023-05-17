@@ -1,40 +1,65 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
+import { configurationStyle } from "../mocks/colors";
 
 interface GlobalContextProps {
   siteColor: string;
   setSiteColor: (color: string) => void;
+
+  colorTheme: {
+    text: string;
+    border: string;
+    background: string;
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    groupHover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+  };
 }
 
-interface Props {
-  children: React.ReactNode;
-}
 const INITIAL_CONTEXT: GlobalContextProps = {
-  siteColor: "green",
+  siteColor: "yellow",
   setSiteColor: (unknown) => unknown,
+  colorTheme: {
+    text: "",
+    border: "",
+    background: "",
+    hover: {
+      text: "",
+      background: "",
+      border: "",
+    },
+    groupHover: {
+      text: "",
+      background: "",
+      border: "",
+    },
+  },
 };
 
 export const GlobalContext = createContext(INITIAL_CONTEXT);
 
-/* const colorsNumber: { [key: number]: string } = {
-  1: "green",
-  2: "blue",
-  3: "yellow",
-  4: "purple",
-}; */
+interface Props {
+  children: React.ReactNode;
+}
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [siteColor, setSiteColor] = useState("yellow");
 
+  const colorTheme = useMemo(() => {
+    return configurationStyle[siteColor as keyof typeof configurationStyle];
+  }, [siteColor]);
+
   const value = {
     siteColor,
     setSiteColor,
+    colorTheme,
   };
-
-  /*  useEffect(() => {
-    const randomColor = Math.floor(Math.random() * 4) + 1;
-
-    setSiteColor(colorsNumber[randomColor]);
-  }, []); */
 
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

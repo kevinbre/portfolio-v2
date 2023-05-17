@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { ColorSelector } from "./ColorSelector";
 
@@ -17,7 +17,7 @@ export const Navbar: React.FC<Props> = ({
 }) => {
   const [isSelected, setIsSelected] = useState(0);
 
-  const { siteColor } = useContext(GlobalContext);
+  const { colorTheme } = useContext(GlobalContext);
 
   const navigateToRef = (
     ref: React.MutableRefObject<null | HTMLDivElement>,
@@ -28,7 +28,7 @@ export const Navbar: React.FC<Props> = ({
     setIsSelected(selected);
   };
 
-  const liStyles = `cursor-pointer hover:text-${siteColor}-400 flex items-center`;
+  const liStyles = `cursor-pointer ${colorTheme.hover.text} flex items-center`;
 
   return (
     <nav
@@ -40,12 +40,12 @@ export const Navbar: React.FC<Props> = ({
         onClick={() => navigateToRef(headerRef, 1)}
       >
         <span
-          className={`text-white group-hover:text-${siteColor}-400 transition-all`}
+          className={`text-white ${colorTheme.groupHover.text} transition-all`}
         >
           &lt; Ke
         </span>
         <span
-          className={`group-hover:text-white transition-all text-${siteColor}-400`}
+          className={`group-hover:text-white transition-all ${colorTheme.text}`}
         >
           v /&gt;
         </span>
@@ -54,7 +54,7 @@ export const Navbar: React.FC<Props> = ({
       <ul className="flex gap-4">
         <li
           className={`${liStyles} ${
-            isSelected === 1 ? `text-${siteColor}-400` : ""
+            isSelected === 1 ? `${colorTheme.text}` : ""
           }`}
           onClick={() => navigateToRef(headerRef, 1)}
         >
@@ -62,7 +62,7 @@ export const Navbar: React.FC<Props> = ({
         </li>
         <li
           className={`${liStyles} ${
-            isSelected === 2 ? `text-${siteColor}-400` : ""
+            isSelected === 2 ? `${colorTheme.text}` : ""
           }`}
           onClick={() => navigateToRef(knowledgeRef, 2)}
         >
@@ -70,7 +70,7 @@ export const Navbar: React.FC<Props> = ({
         </li>
         <li
           className={`${liStyles} ${
-            isSelected === 3 ? `text-${siteColor}-400` : ""
+            isSelected === 3 ? `${colorTheme.text}` : ""
           }`}
           onClick={() => navigateToRef(projectsRef, 3)}
         >
@@ -78,7 +78,7 @@ export const Navbar: React.FC<Props> = ({
         </li>
         <li
           className={`${liStyles} ${
-            isSelected === 4 ? `text-${siteColor}-400` : ""
+            isSelected === 4 ? `${colorTheme.text}` : ""
           }`}
           onClick={() => navigateToRef(curriculumRef, 4)}
         >

@@ -28,17 +28,17 @@ const techIcon: { [key: string]: string } = {
 export const ProjectCard: React.FC<Props> = ({ project }) => {
   const { title, description, image, deploy, repository, technologie } =
     project;
-  const { siteColor } = useContext(GlobalContext);
+  const { colorTheme } = useContext(GlobalContext);
   return (
     <div className="project-card w-80 flex flex-col gap-4 h-full">
       <div
-        className={`project-card__image bg-${siteColor}-400 relative group w-80 h-[180px]`}
+        className={`project-card__image ${colorTheme.background} relative group w-80 h-[180px]`}
       >
         <div
-          className={`absolute w-3 h-3 bg-${siteColor}-400 top-0 left-0 z-0 group-hover:-rotate-45 origin-top-left transition-all`}
+          className={`absolute w-3 h-3 ${colorTheme.background} top-0 left-0 z-0 group-hover:-rotate-45 origin-top-left transition-all`}
         />
         <div
-          className={`absolute w-3 h-3 bg-${siteColor}-400 bottom-0 right-0 z-0 group-hover:rotate-45 origin-bottom-right transition-all`}
+          className={`absolute w-3 h-3 ${colorTheme.background} bottom-0 right-0 z-0 group-hover:rotate-45 origin-bottom-right transition-all`}
         />
         <div className="relative group-hover:translate-x-2 transition-all group-hover:-translate-y-2 before:origin-top-left before:rotate-45 z-10 w-full">
           <img src={image} alt={title} />
@@ -49,7 +49,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
               href={deploy}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex gap-1 items-center font-bold hover:text-${siteColor}-400 transition-all hover:scale-110`}
+              className={`flex gap-1 items-center font-bold ${colorTheme.hover.text} transition-all hover:scale-110`}
             >
               <BiWorld /> Deploy
             </a>
@@ -58,7 +58,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
               href={repository}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex gap-1 items-center font-bold hover:text-${siteColor}-400 transition-all hover:scale-110`}
+              className={`flex gap-1 items-center font-bold ${colorTheme.hover.text} transition-all hover:scale-110`}
             >
               <AiFillGithub />
               Repo
@@ -68,12 +68,10 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
       </div>
 
       <div className="project-card__content w-full flex-col flex gap-2">
-        <h3 className={`text-${siteColor}-500 font-semibold text-xl`}>
-          {title}
-        </h3>
+        <h3 className={`${colorTheme.text} font-semibold text-xl`}>{title}</h3>
         <p>{description}</p>
         <div className="flex gap-2">
-          <span className={`text-${siteColor}-500`}>Stack</span>
+          <span className={`${colorTheme.text}`}>Stack</span>
           <div className="flex gap-4">
             {technologie.map((tech, index) => (
               <img

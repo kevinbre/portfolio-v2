@@ -14,12 +14,12 @@ export const Button: React.FC<Props> = ({
   color = "primary",
   link,
 }) => {
-  const { siteColor } = useContext(GlobalContext);
+  const { colorTheme } = useContext(GlobalContext);
   const btnColor = {
     primary: {
-      solid: `text-black hover:text-white bg-${siteColor}-400 hover:bg-${siteColor}-700`,
-      outline: `text-${siteColor}-400 hover:text-${siteColor}-700 border-2 border-${siteColor}-400 hover:border-${siteColor}-700`,
-      icon: `text-${siteColor}-400 hover:text-${siteColor}-700 h-9 w-9 text-3xl`,
+      solid: `text-black hover:text-white ${colorTheme.background} ${colorTheme.hover.background}`,
+      outline: `${colorTheme.text} ${colorTheme.hover.text} border-2 ${colorTheme.border} ${colorTheme.hover.border}}`,
+      icon: `${colorTheme.text} ${colorTheme.hover.text} h-9 w-9 text-3xl`,
     },
     secondary: {
       solid: "text-white bg-purple-600",
