@@ -1,6 +1,4 @@
-import { useContext, useMemo, useState } from "react";
-import { GlobalContext } from "../context/GlobalContext";
-import { ColorSelector } from "./ColorSelector";
+import { useState } from "react";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
@@ -17,8 +15,6 @@ export const Navbar: React.FC<Props> = ({
 }) => {
   const [isSelected, setIsSelected] = useState(0);
 
-  const { colorTheme } = useContext(GlobalContext);
-
   const navigateToRef = (
     ref: React.MutableRefObject<null | HTMLDivElement>,
     selected: number
@@ -28,7 +24,7 @@ export const Navbar: React.FC<Props> = ({
     setIsSelected(selected);
   };
 
-  const liStyles = `cursor-pointer ${colorTheme.hover.text} flex items-center`;
+  const liStyles = `cursor-pointer hover:text-yellow-400 flex items-center`;
 
   return (
     <nav
@@ -40,12 +36,12 @@ export const Navbar: React.FC<Props> = ({
         onClick={() => navigateToRef(headerRef, 1)}
       >
         <span
-          className={`text-white ${colorTheme.groupHover.text} transition-all`}
+          className={`text-white group-hover:text-yellow-400 transition-all`}
         >
           &lt; Ke
         </span>
         <span
-          className={`group-hover:text-white transition-all ${colorTheme.text}`}
+          className={`group-hover:text-white transition-all text-yellow-400`}
         >
           v /&gt;
         </span>
@@ -53,40 +49,32 @@ export const Navbar: React.FC<Props> = ({
 
       <ul className="flex gap-4">
         <li
-          className={`${liStyles} ${
-            isSelected === 1 ? `${colorTheme.text}` : ""
-          }`}
+          className={`${liStyles} ${isSelected === 1 ? "text-yellow-400" : ""}`}
           onClick={() => navigateToRef(headerRef, 1)}
         >
           Inicio
         </li>
         <li
-          className={`${liStyles} ${
-            isSelected === 2 ? `${colorTheme.text}` : ""
-          }`}
+          className={`${liStyles} ${isSelected === 2 ? "text-yellow-400" : ""}`}
           onClick={() => navigateToRef(knowledgeRef, 2)}
         >
           Conocimientos
         </li>
         <li
-          className={`${liStyles} ${
-            isSelected === 3 ? `${colorTheme.text}` : ""
-          }`}
+          className={`${liStyles} ${isSelected === 3 ? "text-yellow-400" : ""}`}
           onClick={() => navigateToRef(projectsRef, 3)}
         >
           Proyectos
         </li>
         <li
-          className={`${liStyles} ${
-            isSelected === 4 ? `${colorTheme.text}` : ""
-          }`}
+          className={`${liStyles} ${isSelected === 4 ? "text-yellow-400" : ""}`}
           onClick={() => navigateToRef(curriculumRef, 4)}
         >
           Curriculum
         </li>
-        <li className="flex gap-4 items-center">
+        {/* <li className="flex gap-4 items-center">
           <ColorSelector />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

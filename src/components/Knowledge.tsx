@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
 import { SectionLayout } from "../layout/SectionLayout";
 import { technologies } from "../mocks/technologies";
 

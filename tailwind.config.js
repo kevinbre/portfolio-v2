@@ -6,9 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
-  },
+    fontFamily: {
+      'sans': ['source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],	
+    }
+    },
   plugins: [],
-  darkMode: ['class', '[data-mode="dark"]'],
-  yellowMode: ['class', '[data-mode="yellow"]'],
-  purpleMode: ['class', '[data-mode="purple"]'],
+ 
 }

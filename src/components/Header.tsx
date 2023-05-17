@@ -1,18 +1,14 @@
-import { Button } from "./Button";
-import { BsGithub } from "react-icons/bs";
 import { AiFillLinkedin } from "react-icons/ai";
+import { BsGithub } from "react-icons/bs";
+import { Button } from "./Button";
 import { Vscode } from "./Vscode";
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
 }
 
 export const Header: React.FC<Props> = ({ headerRef }) => {
-  const { colorTheme } = useContext(GlobalContext);
-
-  const textEffect = `transition-all hover:text-7xl cursor-default ${colorTheme.hover.text}`;
+  const textEffect = `transition-all hover:text-7xl cursor-default hover:text-yellow-400 `;
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center"
@@ -32,7 +28,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
             </div>
           </div>
 
-          <span className={`${colorTheme.text} text-xl w-full text-start`}>
+          <span className={`text-yellow-400 text-xl w-full text-start`}>
             Frontend Developer
           </span>
         </div>
