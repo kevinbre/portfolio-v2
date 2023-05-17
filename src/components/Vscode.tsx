@@ -9,8 +9,19 @@ import { code } from "../mocks/code";
 import { vscodeFolders } from "../mocks/files";
 import { getIcon } from "../utils/getIcon";
 
+interface ShowFolders {
+  src: boolean;
+  components: boolean;
+  styles: boolean;
+  [key: string]: boolean;
+}
+
+interface Code {
+  [key: string]: string;
+}
+
 export const Vscode: React.FC = () => {
-  const [showFolders, setShowFolders] = useState({
+  const [showFolders, setShowFolders] = useState<ShowFolders>({
     src: true,
     components: false,
     styles: false,
@@ -120,7 +131,7 @@ export const Vscode: React.FC = () => {
           className="h-72 md:h-[450px] w-full overflow-auto scrollbar"
           showLineNumbers
         >
-          {code[fileSelected]}
+          {code[fileSelected as keyof typeof code]}
         </SyntaxHighlighter>
       </div>
       <div className="w-full h-4 bg-[#1E2227] justify-between flex items-center px-2 text-xs">
