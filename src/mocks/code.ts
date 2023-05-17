@@ -93,4 +93,19 @@ export const Header: React.FC = () => {
   readme: `# Hola Juan soy el Readme de luddax`,
   indexCode: `Hola zapete sos el index del cs 📌`,
   Camilo: `Hola soy camilo`,
+  tailwind: `/** @type {import('tailwindcss').Config} */
+  export default {
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+      extend: {},
+      fontFamily: {
+        'sans': ['source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],	
+      }
+      },
+    plugins: [],
+   
+  }`,
 };

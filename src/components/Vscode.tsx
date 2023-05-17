@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
-import { DiJavascript1 } from "react-icons/di";
-import { SiVisualstudiocode } from "react-icons/si";
+import {
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiVisualstudiocode,
+} from "react-icons/si";
 import { VscFiles } from "react-icons/vsc";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { code } from "../mocks/code";
 import { vscodeFolders } from "../mocks/files";
 import { getIcon } from "../utils/getIcon";
+import { HiOutlineInformationCircle } from "react-icons/hi";
+import { DiJavascript1 } from "react-icons/di";
 
 interface ShowFolders {
   src: boolean;
@@ -23,19 +29,21 @@ export const Vscode: React.FC = () => {
     styles: false,
   });
   const [showFiles, setShowFiles] = useState(true);
-  const [fileSelected, setFileSelected] = useState("buttonCode");
+  const [fileSelected, setFileSelected] = useState("README");
+  const [selectedFolder, setSelectedFolder] = useState("README.md");
 
   return (
-    <div className="flex flex-col w-full max-w-[800px]">
-      <div className="w-full h-8 bg-[#1E2227] justify-between flex items-center px-2">
+    <div className="flex flex-col w-full max-w-[800px] ">
+      <div className="w-full h-8 bg-[#1E2227] justify-between flex items-center px-2 rounded-t-lg">
         <div className="flex items-center gap-2">
           <SiVisualstudiocode className="text-blue-500" />
           <h2 className="text-gray-400 font-medium">Portfolio</h2>
         </div>
+        <div>{selectedFolder}</div>
         <div className="flex gap-2">
-          <div className="w-2 h-2 rounded-full bg-green-800" />
-          <div className="w-2 h-2 rounded-full bg-yellow-500" />
-          <div className="w-2 h-2 rounded-full bg-red-500" />
+          <div className="w-2 h-2 rounded-full bg-[#FF605C]" />
+          <div className="w-2 h-2 rounded-full bg-[#FFBD44]" />
+          <div className="w-2 h-2 rounded-full bg-[#00CA4E]" />
         </div>
       </div>
       <div className="flex">
@@ -51,7 +59,7 @@ export const Vscode: React.FC = () => {
 
           <div
             className={`${
-              showFiles ? "w-48 visible" : "w-0 hidden"
+              showFiles ? "w-52 visible" : "w-0 hidden"
             } bg-[#23272E] transition-all`}
           >
             <div className="flex gap-2 h-fit items-center cursor-pointer hover:bg-gray-600/20 px-2 py-1 select-none">
@@ -72,12 +80,12 @@ export const Vscode: React.FC = () => {
                     <>
                       <div
                         className="flex gap-2 h-fit items-center cursor-pointer hover:bg-gray-600/20 px-4 py-1 select-none"
-                        onClick={() =>
+                        onClick={() => {
                           setShowFolders({
                             ...showFolders,
                             [folder.name]: !showFolders[folder.name],
-                          })
-                        }
+                          });
+                        }}
                       >
                         <span
                           className={`${
@@ -98,6 +106,8 @@ export const Vscode: React.FC = () => {
                     {showFolders[folder.name] &&
                       folder.files.map((file) => {
                         const isSelected = fileSelected === file.name;
+                        const icon = getIcon(file.file);
+
                         return (
                           <li
                             key={file.name}
@@ -106,10 +116,22 @@ export const Vscode: React.FC = () => {
                             } select-none flex gap-2 items-center ${
                               isSelected ? "bg-gray-600/20" : ""
                             } `}
-                            onClick={() => setFileSelected(file.name)}
+                            onClick={() => {
+                              setFileSelected(file.name),
+                                setSelectedFolder(file.file);
+                            }}
                           >
-                            {getIcon(file.file)}
-                            <DiJavascript1 className="text-yellow-500" />{" "}
+                            {icon === "tsx" || icon === "ts" ? (
+                              <SiTypescript className="text-[#007acc]" />
+                            ) : icon === "css" ? (
+                              <SiCss3 className="text-blue-500" />
+                            ) : icon === "md" ? (
+                              <HiOutlineInformationCircle className="text-blue-500" />
+                            ) : icon === "config" || icon === "js" ? (
+                              <DiJavascript1 className="text-yellow-400 text-lg" />
+                            ) : (
+                              ""
+                            )}
                             {file.file}
                           </li>
                         );
@@ -130,7 +152,7 @@ export const Vscode: React.FC = () => {
           {code[fileSelected as keyof typeof code]}
         </SyntaxHighlighter>
       </div>
-      <div className="w-full h-4 bg-[#1E2227] justify-between flex items-center px-2 text-xs">
+      <div className="w-full h-4 bg-[#1E2227] justify-between flex items-center px-2 text-xs rounded-b-lg">
         <h2 className="text-gray-200"></h2>
       </div>
     </div>

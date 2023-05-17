@@ -24,6 +24,7 @@ export const vscodeFolders = [
       { name: "appCode", file: "App.tsx" },
       { name: "indexCode", file: "index.tsx" },
       { name: "readme", file: "README.md" },
+      { name: "tailwind", file: "tailwind.config.js" },
     ],
   },
 ];
