@@ -89,10 +89,7 @@ export const Header: React.FC = () => {
     );
 };
   `,
-
   readme: `# Hola Juan soy el Readme de luddax`,
-  indexCode: `Hola zapete sos el index del cs 📌`,
-  Camilo: `Hola soy camilo`,
   tailwind: `/** @type {import('tailwindcss').Config} */
   export default {
     content: [
@@ -108,4 +105,111 @@ export const Header: React.FC = () => {
     plugins: [],
    
   }`,
+  packagejson: `{
+    "name": "portfolio",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build",
+      "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "@types/react-icons": "^3.0.0",
+      "@types/react-syntax-highlighter": "^15.5.6",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-icons": "^4.8.0",
+      "react-syntax-highlighter": "^15.5.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.28",
+      "@types/react-dom": "^18.0.11",
+      "@typescript-eslint/eslint-plugin": "^5.57.1",
+      "@typescript-eslint/parser": "^5.57.1",
+      "@vitejs/plugin-react": "^4.0.0",
+      "autoprefixer": "^10.4.14",
+      "eslint": "^8.38.0",
+      "eslint-plugin-react-hooks": "^4.6.0",
+      "eslint-plugin-react-refresh": "^0.3.4",
+      "postcss": "^8.4.23",
+      "tailwindcss": "^3.3.2",
+      "typescript": "^5.0.2",
+      "vite": "^4.3.2"
+    }
+  }
+  `,
+  indexcss: `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+
+}
+    
+.scrollbar::-webkit-scrollbar-track {
+    background: #323232;
+}
+
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #606060;  
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+}
+
+.scrollbar::-webkit-scrollbar-corner {
+    background-color: #606060;
+}
+
+
+body::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+
+}
+    
+body::-webkit-scrollbar-track {
+    background: #323232;
+}
+
+
+body::-webkit-scrollbar-thumb {
+    background-color: #606060;  
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+}
+
+body::-webkit-scrollbar-corner {
+    background-color: #606060;
+}
+`,
+  projects: `import { SectionLayout } from "../layout/SectionLayout";
+import { projects } from "../mocks/projects";
+import { ProjectCard } from "./ProjectCard";
+
+interface Props {
+  projectsRef: React.MutableRefObject<null | HTMLDivElement>;
+}
+
+export const Projects: React.FC<Props> = ({ projectsRef }) => {
+  return (
+    <SectionLayout title="Proyectos" reference={projectsRef}>
+      <div className="h-full grid xl:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">
+        {projects.reverse().map((project) => (
+          <ProjectCard project={project} key={project.id} />
+        ))}
+      </div>
+    </SectionLayout>
+  );
+};
+`,
 };

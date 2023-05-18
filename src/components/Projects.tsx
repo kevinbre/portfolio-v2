@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const Projects: React.FC<Props> = ({ projectsRef }) => {
-  console.log(projects.reverse());
   return (
     <SectionLayout title="Proyectos" reference={projectsRef}>
       <div className="h-full grid xl:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">

@@ -8,15 +8,15 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ headerRef }) => {
-  const textEffect = `transition-all hover:text-7xl cursor-default hover:text-yellow-400 `;
+  const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-yellow-400 `;
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center"
+      className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center gap-16"
       ref={headerRef}
     >
-      <div className="flex justify-center items-center flex-col gap-5">
+      <div className="flex justify-end md:justify-center items-center flex-col gap-5">
         <div className="w-fit">
-          <div className="text-5xl w-80 h-10 flex items-end justify-start gap-2">
+          <div className="text-4xl w-[265px] md:text-5xl md:w-[350px] h-10 flex items-end justify-start gap-2">
             <div>
               <span className={textEffect}>Ke</span>
               <span className={textEffect}>vin </span>
@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
           </Button>
         </div>
       </div>
-      <div className="flex justify-center items-center md:justify-start px-4 ">
+      <div className="flex justify-center items-start md:items-center md:justify-start px-4 ">
         <Vscode />
       </div>
     </div>

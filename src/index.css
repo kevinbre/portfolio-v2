@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .scrollbar::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -28,8 +26,6 @@
 }
 
 
-/*  */
-
 body::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -53,23 +49,4 @@ body::-webkit-scrollbar-corner {
     background-color: #606060;
 }
 
-.purple {
-    color: #8a2be2;
-    border-color: #8a2be2;
-}
-
-.yellow {
-    color: #ffd700;
-    border-color: #ffd700;
-}
-
-.green {
-    color: #00ff00;
-    border-color: #00ff00;
-}
-
-.blue {
-    color: #0000ff;
-    border-color: #0000ff;
-}
 

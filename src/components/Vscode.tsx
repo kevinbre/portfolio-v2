@@ -6,7 +6,7 @@ import {
   SiTypescript,
   SiVisualstudiocode,
 } from "react-icons/si";
-import { VscFiles } from "react-icons/vsc";
+import { VscFiles, VscJson } from "react-icons/vsc";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { code } from "../mocks/code";
@@ -60,7 +60,7 @@ export const Vscode: React.FC = () => {
           <div
             className={`${
               showFiles ? "w-52 visible" : "w-0 hidden"
-            } bg-[#23272E] transition-all`}
+            } bg-[#23272E] transition-all max-h-[450px] overflow-y-auto scrollbar`}
           >
             <div className="flex gap-2 h-fit items-center cursor-pointer hover:bg-gray-600/20 px-2 py-1 select-none">
               <span
@@ -111,7 +111,7 @@ export const Vscode: React.FC = () => {
                         return (
                           <li
                             key={file.name}
-                            className={`cursor-pointer hover:bg-gray-600/20 ${
+                            className={`cursor-pointer text-sm hover:bg-gray-600/20 ${
                               folder.type === "file" ? "px-2 py-1" : "px-8 py-1"
                             } select-none flex gap-2 items-center ${
                               isSelected ? "bg-gray-600/20" : ""
@@ -129,6 +129,8 @@ export const Vscode: React.FC = () => {
                               <HiOutlineInformationCircle className="text-blue-500" />
                             ) : icon === "config" || icon === "js" ? (
                               <DiJavascript1 className="text-yellow-400 text-lg" />
+                            ) : icon === "json" ? (
+                              <VscJson className="text-yellow-400" />
                             ) : (
                               ""
                             )}

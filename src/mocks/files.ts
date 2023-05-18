@@ -7,7 +7,9 @@ export const vscodeFolders = [
       { name: "headerCode", file: "Header.tsx" },
       { name: "buttonCode", file: "Button.tsx" },
       { name: "vsCode", file: "Vscode.tsx" },
-      { name: "Camilo", file: "Camilo.tsx" },
+      { name: "projects", file: "Projects.tsx" },
+      { name: "projectcard", file: "ProjectCard.tsx" },
+      { name: "footer", file: "Footer.tsx" },
     ],
   },
   {
@@ -22,9 +24,11 @@ export const vscodeFolders = [
     type: "file",
     files: [
       { name: "appCode", file: "App.tsx" },
-      { name: "indexCode", file: "index.tsx" },
+      { name: "main", file: "main.tsx" },
       { name: "readme", file: "README.md" },
       { name: "tailwind", file: "tailwind.config.js" },
+      { name: "indexcss", file: "index.css" },
+      { name: "packagejson", file: "package.json" },
     ],
   },
 ];
