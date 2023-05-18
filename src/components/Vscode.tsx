@@ -1,19 +1,14 @@
 import { useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
-import {
-  SiCss3,
-  SiJavascript,
-  SiTypescript,
-  SiVisualstudiocode,
-} from "react-icons/si";
+import { DiJavascript1 } from "react-icons/di";
+import { HiOutlineInformationCircle } from "react-icons/hi";
+import { SiCss3, SiTypescript, SiVisualstudiocode } from "react-icons/si";
 import { VscFiles, VscJson } from "react-icons/vsc";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { code } from "../mocks/code";
 import { vscodeFolders } from "../mocks/files";
 import { getIcon } from "../utils/getIcon";
-import { HiOutlineInformationCircle } from "react-icons/hi";
-import { DiJavascript1 } from "react-icons/di";
 
 interface ShowFolders {
   src: boolean;

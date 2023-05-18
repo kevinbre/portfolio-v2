@@ -1,5 +1,3 @@
-import { Divide as Hamburger } from "hamburger-react";
-
 interface Props {
   children: React.ReactNode;
   mobile?: boolean;
