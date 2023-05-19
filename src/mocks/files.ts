@@ -14,9 +14,21 @@ export const vscodeFolders = [
   },
   {
     id: 1,
-    name: "styles",
+    name: "hooks",
     type: "folder",
-    files: [{ name: "indexCss", file: "index.css" }],
+    files: [
+      { name: "useBreakpoint", file: "useBreakpoint.ts" },
+      { name: "useWindowSize", file: "useWindowSize.ts" },
+    ],
+  },
+  {
+    id: 1,
+    name: "layout",
+    type: "folder",
+    files: [
+      { name: "sectionlayout", file: "SectionLayout.tsx" },
+      { name: "layout", file: "Layout.tsx" },
+    ],
   },
   {
     id: 2,

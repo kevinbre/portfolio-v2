@@ -4,7 +4,7 @@ interface Props {
   openMenu: boolean;
 }
 
-export const Burguer: React.FC<Props> = ({
+export const MenuMobile: React.FC<Props> = ({
   children,
   mobile = true,
   openMenu,
@@ -13,8 +13,8 @@ export const Burguer: React.FC<Props> = ({
     <>
       {mobile ? (
         <div
-          className={`absolute bg-neutral-950/80 backdrop-blur-lg top-[56px] ${
-            openMenu ? "h-screen py-20 " : "h-0 invisible"
+          className={`absolute bg-neutral-950/80 backdrop-filter backdrop-blur-lg border-0 top-[56px] ${
+            openMenu ? "h-[calc(100vh-56px)] py-20" : "h-0 invisible"
           } left-0 w-screen flex justify-center transition-all z-50`}
         >
           {children}

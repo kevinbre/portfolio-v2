@@ -89,7 +89,25 @@ export const Header: React.FC = () => {
     );
 };
   `,
-  readme: `# Hola Juan soy el Readme de luddax`,
+  readme: ` 🧙🏻‍♂️ Sobre mi
+     Soy Kevin Bredelis, Frontend Developer.
+     Tengo experiencia trabajando en equipo,
+     actualmente me encuentro desarrollando
+     aplicaciones web con React, Typescript, 
+     tailwind y Nextjs. Me encuentro en 
+     constante aprendizaje perfeccionando
+     mis conocimientos.
+
+🚀 Proyecto
+    Portfolio desarrollado con Vite, React, 
+    Typescript y Tailwind. 
+    El código que se muestra, es el código
+    original del proyecto. 
+
+
+📫 Contacto
+    bredeliskev@gmail.com
+`,
   tailwind: `/** @type {import('tailwindcss').Config} */
   export default {
     content: [
@@ -212,4 +230,90 @@ export const Projects: React.FC<Props> = ({ projectsRef }) => {
   );
 };
 `,
+
+  main: `import { useRef } from "react";
+import { Header } from "./components/Header";
+import { Knowledge } from "./components/Knowledge";
+import { Projects } from "./components/Projects";
+import { MainLayout } from "./layout/MainLayout";
+import { Navbar } from "./components/Navbar";
+import { Curriculum } from "./components/Curriculum";
+
+export const App = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const knowledgeRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const curriculumRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <MainLayout>
+      <Navbar
+        headerRef={headerRef}
+        knowledgeRef={knowledgeRef}
+        projectsRef={projectsRef}
+        curriculumRef={curriculumRef}
+      />
+      <Header headerRef={headerRef} />
+      <Knowledge knowledgeRef={knowledgeRef} />
+      <Projects projectsRef={projectsRef} />
+      <Curriculum curriculumRef={curriculumRef} />
+    </MainLayout>
+  );
+};
+`,
+  useBreakpoint: `import { useMemo } from "react";
+  import { useWindowSize } from "./useWindowSize";
+  
+  export function useBreakpoint() {
+    const { width } = useWindowSize();
+  
+    const breakpoint = useMemo(() => {
+      if (!width) return "sm";
+      if (width <= 640) return "sm";
+      if (width <= 768) return "md";
+      if (width <= 1024) return "lg";
+      if (width <= 1280) return "xl";
+      return "2xl";
+    }, [width]);
+  
+    return {
+      is: {
+        sm: breakpoint === "sm",
+        md: breakpoint === "md",
+        lg: breakpoint === "lg",
+        xl: breakpoint === "xl",
+        "2xl": breakpoint === "2xl",
+      },
+      breakpoint,
+    };
+  }
+  `,
+  useWindowSize: `import { useEffect, useState } from "react";
+
+export function useWindowSize() {
+  const [windowSize, setWindowSize] = useState<{
+    width: number | undefined;
+    height: number | undefined;
+  }>({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return windowSize;
+}
+  `,
 };

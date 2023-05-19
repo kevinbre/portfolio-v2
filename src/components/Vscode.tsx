@@ -24,8 +24,18 @@ export const Vscode: React.FC = () => {
     styles: false,
   });
   const [showFiles, setShowFiles] = useState(true);
-  const [fileSelected, setFileSelected] = useState("README");
+  const [fileSelected, setFileSelected] = useState("readme");
   const [selectedFolder, setSelectedFolder] = useState("README.md");
+
+  const techIcons: { [key: string]: JSX.Element } = {
+    js: <DiJavascript1 className="text-yellow-400" />,
+    ts: <SiTypescript className="text-blue-400" />,
+    tsx: <SiTypescript className="text-blue-400" />,
+    css: <SiCss3 className="text-blue-400" />,
+    json: <VscJson className="text-yellow-400" />,
+    md: <HiOutlineInformationCircle className="text-blue-500" />,
+    config: <DiJavascript1 className="text-yellow-400" />,
+  };
 
   return (
     <div className="flex flex-col w-full max-w-[800px] ">
@@ -54,8 +64,8 @@ export const Vscode: React.FC = () => {
 
           <div
             className={`${
-              showFiles ? "w-52 visible" : "w-0 hidden"
-            } bg-[#23272E] transition-all max-h-[450px] overflow-y-auto scrollbar`}
+              showFiles ? "w-52 h-72 visible" : "w-0 hidden"
+            } bg-[#23272E] transition-all md:h-[450px] overflow-auto scrollbar`}
           >
             <div className="flex gap-2 h-fit items-center cursor-pointer hover:bg-gray-600/20 px-2 py-1 select-none">
               <span
@@ -107,7 +117,7 @@ export const Vscode: React.FC = () => {
                           <li
                             key={file.name}
                             className={`cursor-pointer text-sm hover:bg-gray-600/20 ${
-                              folder.type === "file" ? "px-2 py-1" : "px-8 py-1"
+                              folder.type === "file" ? "px-2 py-1" : "pl-6 py-1"
                             } select-none flex gap-2 items-center ${
                               isSelected ? "bg-gray-600/20" : ""
                             } `}
@@ -116,19 +126,7 @@ export const Vscode: React.FC = () => {
                                 setSelectedFolder(file.file);
                             }}
                           >
-                            {icon === "tsx" || icon === "ts" ? (
-                              <SiTypescript className="text-[#007acc]" />
-                            ) : icon === "css" ? (
-                              <SiCss3 className="text-blue-500" />
-                            ) : icon === "md" ? (
-                              <HiOutlineInformationCircle className="text-blue-500" />
-                            ) : icon === "config" || icon === "js" ? (
-                              <DiJavascript1 className="text-yellow-400 text-lg" />
-                            ) : icon === "json" ? (
-                              <VscJson className="text-yellow-400" />
-                            ) : (
-                              ""
-                            )}
+                            {techIcons[icon]}
                             {file.file}
                           </li>
                         );

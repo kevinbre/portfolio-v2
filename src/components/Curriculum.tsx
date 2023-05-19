@@ -1,11 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { SectionLayout } from "../layout/SectionLayout";
+import { ImageMagnifier } from "../utils/magnifier";
+import { Switch } from "./Switch";
 
 interface Props {
   curriculumRef: React.MutableRefObject<null | HTMLDivElement>;
 }
 
 export const Curriculum: React.FC<Props> = ({ curriculumRef }) => {
+  const [effect, setEffect] = useState(false);
+
   let bounds;
   const inputRef = useRef<HTMLImageElement>(null);
 
@@ -45,10 +49,20 @@ export const Curriculum: React.FC<Props> = ({ curriculumRef }) => {
         onMouseLeave={removeListener}
         onMouseMove={rotateToMouse}
       >
-        <div
-          ref={inputRef}
-          className="duration-300 ease-out rounded-md max-w-2xl bg-[url('/cv.jpg')] w-[350px] h-[500px] bg-contain bg-center bg-no-repeat"
-        />
+        <>
+          {effect ? (
+            <img
+              src="/cv.jpg"
+              ref={inputRef}
+              className="duration-300 ease-out rounded-md max-w-2xl w-[350px] h-[500px] bg-contain bg-center bg-no-repeat"
+            />
+          ) : (
+            <ImageMagnifier width={"350px"} src="/cv.jpg" />
+          )}
+        </>
+      </div>
+      <div className="mt-10">
+        <Switch onClick={() => setEffect(!effect)} />
       </div>
     </SectionLayout>
   );

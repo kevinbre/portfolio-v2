@@ -7,8 +7,11 @@ interface Props {
 
 export const Knowledge: React.FC<Props> = ({ knowledgeRef }) => {
   return (
-    <SectionLayout title="Conocimientos" reference={knowledgeRef}>
-      <p className="text-medium">Conocimientos tecnologias</p>
+    <SectionLayout
+      title="Conocimientos"
+      reference={knowledgeRef}
+      subtitle="Tengo experiencia en las siguientes tecnologías:"
+    >
       <div
         className="h-fit grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 w-full gap-4 "
         style={{ perspective: "1500px" }}
