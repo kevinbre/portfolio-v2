@@ -46,7 +46,7 @@ export const Vscode: React.FC = () => {
     } else {
       setShowFiles(true);
     }
-  }, [breakpoint]);
+  }, []);
 
   return (
     <div className="flex flex-col w-full max-w-[800px] ">
