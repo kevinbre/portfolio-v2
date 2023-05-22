@@ -5,6 +5,8 @@ import { Switch } from "./Switch";
 import { GlobalContext } from "../context/GlobalContext";
 import { cvTexts } from "../i18n/cvTexts";
 import { useBreakpoint } from "../hooks/useBreakpoint";
+import { Button } from "./Button";
+import { BiSearch } from "react-icons/bi";
 
 interface Props {
   curriculumRef: React.MutableRefObject<null | HTMLDivElement>;
@@ -48,33 +50,59 @@ export const Curriculum: React.FC<Props> = ({ curriculumRef }) => {
   };
 
   return (
-    <SectionLayout reference={curriculumRef} title={"Curriculum"}>
-      <div
-        className="ease-in-out rounded-lg"
-        style={{ perspective: "1000px", transform: "rotate3d(0)" }}
-        onMouseLeave={removeListener}
-        onMouseMove={rotateToMouse}
-      >
+    <SectionLayout reference={curriculumRef} title={cv.sectionTitle}>
+      {breakpoint.is.sm ? (
+        <div className="flex flex-col gap-4 items-center">
+          <div
+            ref={inputRef}
+            className={`duration-300 ease-out rounded-md ${cv.style} bg-contain bg-center bg-no-repeat w-[350px] h-[480px] md:w-[450px] md:h-[615px]`}
+          />
+
+          <Button
+            variant="outline"
+            link={cv.driveLink}
+            name={cv.buttonText}
+            className="w-fit"
+          >
+            <span className="font-bold flex gap-2 items-center">
+              {cv.buttonText}
+              <BiSearch />
+            </span>
+          </Button>
+        </div>
+      ) : (
         <>
-          {effect ? (
+          <div
+            className="ease-in-out rounded-lg"
+            style={{ perspective: "1000px", transform: "rotate3d(0)" }}
+            onMouseLeave={removeListener}
+            onMouseMove={rotateToMouse}
+          >
             <>
-              <div
-                ref={inputRef}
-                className={`duration-300 ease-out rounded-md ${cv.style} bg-contain bg-center bg-no-repeat w-[350px] h-[480px] md:w-[450px] md:h-[615px]`}
-              />
+              {effect ? (
+                <>
+                  <div
+                    ref={inputRef}
+                    className={`duration-300 ease-out rounded-md ${cv.style} bg-contain bg-center bg-no-repeat w-[350px] h-[480px] md:w-[450px] md:h-[615px]`}
+                  />
+                </>
+              ) : (
+                <ImageMagnifier
+                  width={breakpoint.is.sm ? "350px" : "450px"}
+                  height={breakpoint.is.sm ? "480px" : "615px"}
+                  src={
+                    language === "ES" ? "/spanish-cv.jpg" : "/english-cv.jpg"
+                  }
+                />
+              )}
             </>
-          ) : (
-            <ImageMagnifier
-              width={breakpoint.is.sm ? "350px" : "450px"}
-              height={breakpoint.is.sm ? "480px" : "615px"}
-              src={language === "ES" ? "/spanish-cv.jpg" : "/english-cv.jpg"}
-            />
-          )}
+          </div>
+
+          <div className="mt-10">
+            <Switch onClick={() => setEffect(!effect)} />
+          </div>
         </>
-      </div>
-      <div className="mt-10">
-        <Switch onClick={() => setEffect(!effect)} />
-      </div>
+      )}
     </SectionLayout>
   );
 };

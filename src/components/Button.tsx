@@ -5,6 +5,7 @@ interface Props {
   link?: string;
   name?: string;
   download?: boolean;
+  className?: string;
 }
 
 export const Button: React.FC<Props> = ({
@@ -14,6 +15,7 @@ export const Button: React.FC<Props> = ({
   link,
   name = "button",
   download,
+  className,
 }) => {
   const btnColor = {
     primary: {
@@ -31,7 +33,7 @@ export const Button: React.FC<Props> = ({
     btnColor[color][variant]
   } flex justify-center items-center rounded-md transition-all ${
     variant === "icon" ? "hover:text-4xl p-0" : "hover:scale-105 px-4 py-1"
-  } font-medium`;
+  } font-medium ${className}`;
   return (
     <>
       {link ? (

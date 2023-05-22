@@ -11,14 +11,16 @@ export const App = () => {
   const knowledgeRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const curriculumRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <MainLayout>
+    <MainLayout footerRef={footerRef}>
       <Navbar
         headerRef={headerRef}
         knowledgeRef={knowledgeRef}
         projectsRef={projectsRef}
         curriculumRef={curriculumRef}
+        footerRef={footerRef}
       />
       <Header headerRef={headerRef} />
       <Knowledge knowledgeRef={knowledgeRef} />

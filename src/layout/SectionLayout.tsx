@@ -15,7 +15,7 @@ export const SectionLayout: React.FC<Props> = ({
 }) => {
   return (
     <section
-      className="min-h-screen flex justify-center py-24 flex-col items-center gap-10"
+      className="min-h-screen flex justify-center py-24 flex-col items-center gap-10 px-4"
       ref={reference}
     >
       <Title title={title} subtitle={subtitle} />

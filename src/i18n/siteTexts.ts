@@ -16,6 +16,7 @@ export const siteTexts = {
         knowledge: "Conocimientos",
         projects: "Proyectos",
         cv: "Curriculum",
+        contact: "Contacto",
       },
       knowledge: {
         title: "Conocimientos",
@@ -156,6 +157,7 @@ export const siteTexts = {
         knowledge: "Knowledge",
         projects: "Projects",
         cv: "Resume",
+        contact: "Contact",
       },
       knowledge: {
         title: "Knowledge",

@@ -77,6 +77,8 @@ export const cvTexts = {
       driveLink:
         "https://drive.google.com/file/d/1tAMOnU8pKedqN6CzVApyK9qCJAHGsB9N/view?usp=sharing",
       downloadLink: "/KevinBredelis-FrontendDeveloper-ES.pdf",
+      buttonText: "Ver CV",
+      sectionTitle: "Curriculum",
     },
   },
   EN: {
@@ -157,6 +159,8 @@ export const cvTexts = {
       driveLink:
         "https://drive.google.com/file/d/1OpgrEarDSxq0FpezXt660TTJppjzL_n3/view?usp=sharing",
       downloadLink: "/KevinBredelis-FrontendDeveloper-EN.pdf",
+      buttonText: "View Resume",
+      sectionTitle: "Resume",
     },
   },
 };

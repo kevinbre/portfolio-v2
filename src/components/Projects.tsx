@@ -15,9 +15,9 @@ export const Projects: React.FC<Props> = ({ projectsRef }) => {
 
   return (
     <SectionLayout
-      title="Proyectos"
+      title={projects.title}
       reference={projectsRef}
-      subtitle="Proyectos personales"
+      subtitle={projects.subtitle}
     >
       <div className="h-full grid xl:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">
         {projects.items.map((project) => (

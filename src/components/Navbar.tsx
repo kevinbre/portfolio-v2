@@ -12,6 +12,7 @@ interface Props {
   knowledgeRef: React.MutableRefObject<null | HTMLDivElement>;
   projectsRef: React.MutableRefObject<null | HTMLDivElement>;
   curriculumRef: React.MutableRefObject<null | HTMLDivElement>;
+  footerRef: React.MutableRefObject<null | HTMLDivElement>;
 }
 
 export const Navbar: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const Navbar: React.FC<Props> = ({
   knowledgeRef,
   projectsRef,
   curriculumRef,
+  footerRef,
 }) => {
   const [isSelected, setIsSelected] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
@@ -90,6 +92,14 @@ export const Navbar: React.FC<Props> = ({
               onClick={() => navigateToRef(curriculumRef, 4)}
             >
               {navbar.cv}
+            </li>
+            <li
+              className={`${liStyles} ${
+                isSelected === 5 ? "text-yellow-400" : ""
+              }`}
+              onClick={() => navigateToRef(footerRef, 5)}
+            >
+              {navbar.contact}
             </li>
             <li className="flex items-center justify-center">
               <Language onClick={() => setOpenMenu(false)} />
