@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
-
 interface Props {
   children: React.ReactNode;
   variant?: "outline" | "solid" | "icon";
   color?: "primary" | "secondary";
   link?: string;
   name?: string;
+  download?: boolean;
 }
 
 export const Button: React.FC<Props> = ({
@@ -15,6 +13,7 @@ export const Button: React.FC<Props> = ({
   color = "primary",
   link,
   name = "button",
+  download,
 }) => {
   const btnColor = {
     primary: {
@@ -36,7 +35,7 @@ export const Button: React.FC<Props> = ({
   return (
     <>
       {link ? (
-        <a href={link} className={classes} target="_blank" download={true}>
+        <a href={link} className={classes} target="_blank" download={download}>
           {children}
         </a>
       ) : (

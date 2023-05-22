@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
           <Button variant="icon" link={networks.linkedin}>
             <AiFillLinkedin />
           </Button>
-          <Button link={downloadLink} variant="outline">
+          <Button link={downloadLink} variant="outline" download={true}>
             {header.downloadCV}
           </Button>
         </div>
