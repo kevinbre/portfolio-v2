@@ -2,51 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-.scrollbar::-webkit-scrollbar {
-    width: 12px;
+
+@layer {
+    .scrollbar::-webkit-scrollbar {
+        width: 12px;
     height: 12px;
 
+    }
+        
+    .scrollbar::-webkit-scrollbar-track {
+        background: #323232;
+    }
+
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: #606060;  
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #808080;
+    }
+
+    .scrollbar::-webkit-scrollbar-corner {
+        background-color: #606060;
+    }
+
+
+    body::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #323232;
+    }
+
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #606060;  
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background: #808080;
+    }
+
+    body::-webkit-scrollbar-corner {
+        background-color: #606060;
+    }
 }
-    
-.scrollbar::-webkit-scrollbar-track {
-    background: #323232;
-}
-
-
-.scrollbar::-webkit-scrollbar-thumb {
-    background-color: #606060;  
-}
-
-.scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #808080;
-}
-
-.scrollbar::-webkit-scrollbar-corner {
-    background-color: #606060;
-}
-
-
-body::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-
-}
-    
-body::-webkit-scrollbar-track {
-    background: #323232;
-}
-
-
-body::-webkit-scrollbar-thumb {
-    background-color: #606060;  
-}
-
-body::-webkit-scrollbar-thumb:hover {
-    background: #808080;
-}
-
-body::-webkit-scrollbar-corner {
-    background-color: #606060;
-}
-
 

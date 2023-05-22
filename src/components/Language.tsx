@@ -6,15 +6,17 @@ interface Props {
 }
 
 export const Language: React.FC<Props> = ({ onClick = () => {} }) => {
-  const { selectLanguage } = useContext(GlobalContext);
+  const { language, selectLanguage } = useContext(GlobalContext);
 
-  const flagStyles = `cursor-pointer hover:scale-105 transition-all`;
+  const flagStyles = `cursor-pointer hover:scale-110 hover:grayscale-0`;
 
   return (
     <div className="flex gap-2 items-center">
       <img
         src="/usa-flag.png"
-        className={flagStyles}
+        className={`${flagStyles} ${
+          language === "EN" ? "grayscale-0" : "grayscale"
+        } `}
         onClick={() => {
           selectLanguage("EN"), onClick();
         }}
@@ -23,7 +25,9 @@ export const Language: React.FC<Props> = ({ onClick = () => {} }) => {
 
       <img
         src="/arg-flag.png"
-        className={flagStyles}
+        className={`${flagStyles} ${
+          language === "ES" ? "grayscale-0" : "grayscale"
+        } `}
         onClick={() => {
           selectLanguage("ES"), onClick();
         }}

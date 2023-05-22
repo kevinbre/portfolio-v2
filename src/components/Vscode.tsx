@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
 import { DiJavascript1 } from "react-icons/di";
 import { HiOutlineInformationCircle } from "react-icons/hi";
@@ -7,9 +7,10 @@ import { VscFiles, VscJson } from "react-icons/vsc";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { code } from "../mocks/code";
-import { vscodeFolders } from "../mocks/files";
+import { vscodeFoldersEN, vscodeFoldersES } from "../mocks/files";
 import { getIcon } from "../utils/getIcon";
 import { useBreakpoint } from "../hooks/useBreakpoint";
+import { GlobalContext } from "../context/GlobalContext";
 
 interface ShowFolders {
   src: boolean;
@@ -25,8 +26,11 @@ export const Vscode: React.FC = () => {
     styles: false,
   });
 
+  const { language } = useContext(GlobalContext);
+
   const [showFiles, setShowFiles] = useState(true);
-  const [fileSelected, setFileSelected] = useState("readme");
+  const [fileSelected, setFileSelected] = useState("");
+
   const [selectedFolder, setSelectedFolder] = useState("README.md");
   const breakpoint = useBreakpoint();
 
@@ -41,12 +45,22 @@ export const Vscode: React.FC = () => {
   };
 
   useEffect(() => {
+    language === "EN"
+      ? setFileSelected("readmeEN")
+      : setFileSelected("readmeES");
+  }, [language]);
+
+  useEffect(() => {
     if (breakpoint.is.sm || breakpoint.is.md) {
       setShowFiles(false);
     } else {
       setShowFiles(true);
     }
   }, []);
+
+  const vscodeFolders = useMemo(() => {
+    return language === "EN" ? vscodeFoldersEN : vscodeFoldersES;
+  }, [language]);
 
   return (
     <div className="flex flex-col w-full max-w-[800px] ">

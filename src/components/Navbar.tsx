@@ -5,6 +5,7 @@ import { MenuMobile } from "./MenuMobile";
 import { Language } from "./Language";
 import { GlobalContext } from "../context/GlobalContext";
 import { siteTexts } from "../i18n/siteTexts";
+import { Logo } from "./Logo";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
@@ -50,19 +51,10 @@ export const Navbar: React.FC<Props> = ({
       ref={headerRef}
     >
       <div
-        className="font-bold text-lg cursor-pointer group flex"
+        className="font-bold text-lg "
         onClick={() => navigateToRef(headerRef, 1)}
       >
-        <div
-          className={`text-white group-hover:text-yellow-400 transition-all`}
-        >
-          <span className="group-hover:pr-2 transition-all">&lt;</span>Ke
-        </div>
-        <div
-          className={`group-hover:text-white transition-all text-yellow-400`}
-        >
-          v<span className="group-hover:pl-2 transition-all">/&gt;</span>
-        </div>
+        <Logo />
       </div>
       <div className="flex gap-4 items-center">
         <MenuMobile openMenu={openMenu} mobile={isMobile}>

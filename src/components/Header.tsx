@@ -54,7 +54,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
           </Button>
         </div>
       </div>
-      <div className="flex justify-center items-start lg:items-center lg:justify-start px-4 ">
+      <div className="flex justify-center items-start lg:items-center lg:justify-start px-6 md:pr-10">
         <Vscode />
       </div>
     </div>
