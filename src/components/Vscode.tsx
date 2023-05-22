@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
 import { DiJavascript1 } from "react-icons/di";
 import { HiOutlineInformationCircle } from "react-icons/hi";
@@ -9,6 +9,7 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { code } from "../mocks/code";
 import { vscodeFolders } from "../mocks/files";
 import { getIcon } from "../utils/getIcon";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface ShowFolders {
   src: boolean;
@@ -23,9 +24,11 @@ export const Vscode: React.FC = () => {
     components: false,
     styles: false,
   });
+
   const [showFiles, setShowFiles] = useState(true);
   const [fileSelected, setFileSelected] = useState("readme");
   const [selectedFolder, setSelectedFolder] = useState("README.md");
+  const breakpoint = useBreakpoint();
 
   const techIcons: { [key: string]: JSX.Element } = {
     js: <DiJavascript1 className="text-yellow-400" />,
@@ -36,6 +39,14 @@ export const Vscode: React.FC = () => {
     md: <HiOutlineInformationCircle className="text-blue-500" />,
     config: <DiJavascript1 className="text-yellow-400" />,
   };
+
+  useEffect(() => {
+    if (breakpoint.is.sm || breakpoint.is.md) {
+      setShowFiles(false);
+    } else {
+      setShowFiles(true);
+    }
+  }, [breakpoint]);
 
   return (
     <div className="flex flex-col w-full max-w-[800px] ">

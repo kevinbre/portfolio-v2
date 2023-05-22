@@ -2,6 +2,8 @@ import PokemonGame from "/pokedex-game.jpg";
 import Giffy from "/giffy.jpg";
 import ComponentsApp from "/components-app.jpg";
 import RandomFood from "/random-food.jpg";
+import HeroesApp from "/heroes-app.jpg";
+import SellSystem from "/stock-app.jpg";
 
 export const siteTexts = {
   ES: {
@@ -25,26 +27,16 @@ export const siteTexts = {
         items: [
           {
             id: 0,
-            title: "Pokedex Game",
-            technologie: ["react", "typescript", "nextjs"],
+            title: "Random Food",
+            technologie: ["vite", "typescript", "react"],
             description:
-              "Mini juego de pokemon para capturar Pokemon's y verlos en tu pokedex",
-            image: PokemonGame,
-            deploy: "https://pokedex-game-lyart.vercel.app/",
-            repository: "https://github.com/kevinbre/pokemon",
+              "App creada para elegir un restaurant al azar de un listado.",
+            image: RandomFood,
+            deploy: "https://random-food-two.vercel.app/",
+            repository: "https://github.com/kevinbre/random-food",
           },
           {
             id: 1,
-            title: "Giffy",
-            technologie: ["javascript", "react"],
-            description:
-              "Aplicación utilizando la api de Giphy para buscar gifs.",
-            image: Giffy,
-            deploy: "https://giffy-iota.vercel.app/",
-            repository: "https://github.com/kevinbre/giffy",
-          },
-          {
-            id: 2,
             title: "Components App",
             technologie: ["vite", "typescript", "react"],
             description:
@@ -54,14 +46,44 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/components",
           },
           {
-            id: 3,
-            title: "Random Food",
-            technologie: ["vite", "typescript", "react"],
+            id: 2,
+            title: "Pokedex Game",
+            technologie: ["react", "typescript", "nextjs"],
             description:
-              "App creada para elegir un restaurant al azar de un listado.",
-            image: RandomFood,
-            deploy: "https://random-food-two.vercel.app/",
-            repository: "https://github.com/kevinbre/random-food",
+              "Mini juego para capturar Pokemon's y verlos en tu pokedex",
+            image: PokemonGame,
+            deploy: "https://pokedex-game-lyart.vercel.app/",
+            repository: "https://github.com/kevinbre/pokemon",
+          },
+          {
+            id: 3,
+            title: "Giffy",
+            technologie: ["javascript", "react"],
+            description:
+              "Aplicación utilizando la api de Giphy para buscar gifs.",
+            image: Giffy,
+            deploy: "https://giffy-iota.vercel.app/",
+            repository: "https://github.com/kevinbre/giffy",
+          },
+          {
+            id: 4,
+            title: "Heroes App",
+            technologie: ["javascript", "react"],
+            description:
+              "Aplicación para buscar heroes y villanos y armar un equipo.",
+            image: HeroesApp,
+            deploy: "",
+            repository: "https://github.com/kevinbre/app-heros-react",
+          },
+          {
+            id: 5,
+            title: "Sistema de Ventas",
+            technologie: ["javascript", "php", "mysql"],
+            description:
+              "Sistema para crear stock, realizar ventas y generar facturas.",
+            image: SellSystem,
+            deploy: "",
+            repository: "https://github.com/kevinbre/sistemaventas",
           },
         ],
       },
@@ -145,25 +167,16 @@ export const siteTexts = {
         items: [
           {
             id: 0,
-            title: "Pokedex Game",
-            technologie: ["react", "typescript", "nextjs"],
+            title: "Random Food",
+            technologie: ["vite", "typescript", "react"],
             description:
-              "Mini game of pokemon to capture Pokemon's and see them in your pokedex.",
-            image: PokemonGame,
-            deploy: "https://pokedex-game-lyart.vercel.app/",
-            repository: "https://github.com/kevinbre/pokemon",
+              "App created to choose a random restaurant from a list.",
+            image: RandomFood,
+            deploy: "https://random-food-two.vercel.app/",
+            repository: "https://github.com/kevinbre/random-food",
           },
           {
             id: 1,
-            title: "Giffy",
-            technologie: ["javascript", "react"],
-            description: "Application using the Giphy api to search for gifs.",
-            image: Giffy,
-            deploy: "https://giffy-iota.vercel.app/",
-            repository: "https://github.com/kevinbre/giffy",
-          },
-          {
-            id: 2,
             title: "Components App",
             technologie: ["vite", "typescript", "react"],
             description: "Web created to give a talk about React components.",
@@ -172,14 +185,43 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/components",
           },
           {
-            id: 3,
-            title: "Random Food",
-            technologie: ["vite", "typescript", "react"],
+            id: 2,
+            title: "Pokedex Game",
+            technologie: ["react", "typescript", "nextjs"],
             description:
-              "App created to choose a random restaurant from a list.",
-            image: RandomFood,
-            deploy: "https://random-food-two.vercel.app/",
-            repository: "https://github.com/kevinbre/random-food",
+              "Mini game to capture Pokemon's and see them in your pokedex.",
+            image: PokemonGame,
+            deploy: "https://pokedex-game-lyart.vercel.app/",
+            repository: "https://github.com/kevinbre/pokemon",
+          },
+          {
+            id: 3,
+            title: "Giffy",
+            technologie: ["javascript", "react"],
+            description: "Application using the Giphy api to search for gifs.",
+            image: Giffy,
+            deploy: "https://giffy-iota.vercel.app/",
+            repository: "https://github.com/kevinbre/giffy",
+          },
+          {
+            id: 4,
+            title: "Heroes App",
+            technologie: ["javascript", "react", "redux"],
+            description:
+              "Application to search for heroes and villains and build a team.",
+            image: HeroesApp,
+            deploy: "",
+            repository: "https://github.com/kevinbre/app-heros-react",
+          },
+          {
+            id: 5,
+            title: "Sell System",
+            technologie: ["javascript", "php", "mysql"],
+            description:
+              "System to create stock, make sales and generate invoices.",
+            image: SellSystem,
+            deploy: "",
+            repository: "https://github.com/kevinbre/sistemaventas",
           },
         ],
       },

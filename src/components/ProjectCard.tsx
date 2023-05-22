@@ -19,8 +19,10 @@ const techIcon: { [key: string]: string } = {
   mongodb: "/icons/mongodb.svg",
   postgresql: "/icons/postgresql.svg",
   nextjs: "/icons/nextjs.svg",
-  redux: "/icons/nextjs.svg",
+  redux: "/icons/redux.svg",
   vite: "/icons/vite.svg",
+  php: "/icons/php.svg",
+  mysql: "/icons/mysql.svg",
 };
 
 export const ProjectCard: React.FC<Props> = ({ project }) => {
@@ -43,15 +45,19 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
           <div
             className={`absolute w-full text-white  h-full top-0 left-0 z-20 gap-2 group-hover:backdrop-blur-sm hidden group-hover:flex items-center justify-center bg-black/40`}
           >
-            <a
-              href={deploy}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110`}
-            >
-              <BiWorld /> Deploy
-            </a>
-            |
+            {deploy.length > 0 && (
+              <>
+                <a
+                  href={deploy}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110`}
+                >
+                  <BiWorld /> Deploy
+                </a>
+                |
+              </>
+            )}
             <a
               href={repository}
               target="_blank"

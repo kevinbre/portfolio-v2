@@ -16,6 +16,7 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
   const { header } = siteTexts[language].components;
   const { downloadLink } = cvTexts[language].cv;
   const { networks } = siteTexts;
+
   const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-yellow-400 `;
   return (
     <div
