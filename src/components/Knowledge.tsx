@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
+import { siteTexts } from "../i18n/siteTexts";
 import { SectionLayout } from "../layout/SectionLayout";
 import { technologies } from "../mocks/technologies";
 
@@ -6,11 +9,14 @@ interface Props {
 }
 
 export const Knowledge: React.FC<Props> = ({ knowledgeRef }) => {
+  const { language } = useContext(GlobalContext);
+  const { knowledge } = siteTexts[language].components;
+
   return (
     <SectionLayout
-      title="Conocimientos"
+      title={knowledge.title}
       reference={knowledgeRef}
-      subtitle="Tengo experiencia en las siguientes tecnologías:"
+      subtitle={knowledge.subtitle}
     >
       <div
         className="h-fit grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 w-full gap-4 "

@@ -1,10 +1,13 @@
 import { SiGithub, SiGmail, SiLinkedin, SiWhatsapp } from "react-icons/si";
 import { Button } from "./Button";
+import { siteTexts } from "../i18n/siteTexts";
 
 export const Footer: React.FC = () => {
   const getCurrentYear = () => {
     return new Date().getFullYear();
   };
+
+  const { networks } = siteTexts;
 
   return (
     <footer className="flex items-center flex-col border-t border-yellow-400/5 bg-neutral-900/10">
@@ -16,20 +19,16 @@ export const Footer: React.FC = () => {
         <div className="flex gap-2 flex-col items-center md:items-start">
           <span className="font-medium text-gray-300">Contacto</span>
           <div className="flex gap-4">
-            <Button
-              variant="icon"
-              link="
-            https://www.linkedin.com/in/kevin-bredelis-14a475178/"
-            >
+            <Button variant="icon" link={networks.github}>
               <SiGithub />
             </Button>
-            <Button variant="icon" link="">
+            <Button variant="icon" link={networks.linkedin}>
               <SiLinkedin />
             </Button>
-            <Button variant="icon">
+            <Button variant="icon" link={networks.whatsapp}>
               <SiWhatsapp />
             </Button>
-            <Button variant="icon">
+            <Button variant="icon" link={networks.email}>
               <SiGmail />
             </Button>
           </div>

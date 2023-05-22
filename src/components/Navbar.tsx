@@ -1,7 +1,10 @@
 import { Divide as Hamburger } from "hamburger-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 import { MenuMobile } from "./MenuMobile";
+import { Language } from "./Language";
+import { GlobalContext } from "../context/GlobalContext";
+import { siteTexts } from "../i18n/siteTexts";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
@@ -19,6 +22,8 @@ export const Navbar: React.FC<Props> = ({
   const [isSelected, setIsSelected] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const breakpoint = useBreakpoint();
+  const { language } = useContext(GlobalContext);
+  const { navbar } = siteTexts[language].components;
 
   const navigateToRef = (
     ref: React.MutableRefObject<null | HTMLDivElement>,
@@ -59,13 +64,7 @@ export const Navbar: React.FC<Props> = ({
           v<span className="group-hover:pl-2 transition-all">/&gt;</span>
         </div>
       </div>
-      <div className="">
-        {isMobile && (
-          <Hamburger
-            onToggle={() => setOpenMenu(!openMenu)}
-            toggled={openMenu}
-          />
-        )}
+      <div className="flex gap-4 items-center">
         <MenuMobile openMenu={openMenu} mobile={isMobile}>
           <ul className="flex gap-4 flex-col lg:flex-row">
             <li
@@ -74,7 +73,7 @@ export const Navbar: React.FC<Props> = ({
               }`}
               onClick={() => navigateToRef(headerRef, 1)}
             >
-              Inicio
+              {navbar.home}
             </li>
             <li
               className={`${liStyles} ${
@@ -82,7 +81,7 @@ export const Navbar: React.FC<Props> = ({
               }`}
               onClick={() => navigateToRef(knowledgeRef, 2)}
             >
-              Conocimientos
+              {navbar.knowledge}
             </li>
             <li
               className={`${liStyles} ${
@@ -90,7 +89,7 @@ export const Navbar: React.FC<Props> = ({
               }`}
               onClick={() => navigateToRef(projectsRef, 3)}
             >
-              Proyectos
+              {navbar.projects}
             </li>
             <li
               className={`${liStyles} ${
@@ -98,10 +97,20 @@ export const Navbar: React.FC<Props> = ({
               }`}
               onClick={() => navigateToRef(curriculumRef, 4)}
             >
-              Curriculum
+              {navbar.cv}
+            </li>
+            <li className="flex items-center justify-center">
+              <Language onClick={() => setOpenMenu(false)} />
             </li>
           </ul>
         </MenuMobile>
+
+        {isMobile && (
+          <Hamburger
+            onToggle={() => setOpenMenu(!openMenu)}
+            toggled={openMenu}
+          />
+        )}
       </div>
     </nav>
   );

@@ -11,6 +11,11 @@ import sass from "/icons/sass.svg";
 import vite from "/icons/vite.svg";
 import git from "/icons/git.svg";
 import mysql from "/icons/mysql.svg";
+import mongo from "/icons/mongodb.svg";
+import docker from "/icons/docker.svg";
+import firebase from "/icons/firebase.svg";
+import graphql from "/icons/graphql.svg";
+import redux from "/icons/redux.svg";
 
 export const technologies = [
   {
@@ -63,7 +68,27 @@ export const technologies = [
     icon: git,
   },
   {
+    name: "Graphql",
+    icon: graphql,
+  },
+  {
     name: "Mysql",
     icon: mysql,
+  },
+  {
+    name: "MongoDB",
+    icon: mongo,
+  },
+  {
+    name: "Firebase",
+    icon: firebase,
+  },
+  {
+    name: "Docker",
+    icon: docker,
+  },
+  {
+    name: "Redux",
+    icon: redux,
   },
 ];

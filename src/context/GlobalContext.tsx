@@ -1,64 +1,41 @@
-import { createContext, useMemo, useState } from "react";
-import { configurationStyle } from "../mocks/colors";
+import { createContext, useEffect, useState } from "react";
+
+type Language = "ES" | "EN";
 
 interface GlobalContextProps {
-  siteColor: string;
-  setSiteColor: (color: string) => void;
-
-  colorTheme: {
-    text: string;
-    border: string;
-    background: string;
-    hover: {
-      text: string;
-      background: string;
-      border: string;
-    };
-    groupHover: {
-      text: string;
-      background: string;
-      border: string;
-    };
-  };
+  language: "ES" | "EN";
+  selectLanguage: (language: Language) => void;
 }
 
 const INITIAL_CONTEXT: GlobalContextProps = {
-  siteColor: "yellow",
-  setSiteColor: (unknown) => unknown,
-  colorTheme: {
-    text: "",
-    border: "",
-    background: "",
-    hover: {
-      text: "",
-      background: "",
-      border: "",
-    },
-    groupHover: {
-      text: "",
-      background: "",
-      border: "",
-    },
-  },
+  language: "ES",
+  selectLanguage: () => {},
 };
 
-export const GlobalContext = createContext(INITIAL_CONTEXT);
+export const GlobalContext = createContext<GlobalContextProps>(INITIAL_CONTEXT);
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
-  const [siteColor, setSiteColor] = useState("yellow");
+  const [language, setLanguage] = useState(INITIAL_CONTEXT.language);
 
-  const colorTheme = useMemo(() => {
-    return configurationStyle[siteColor as keyof typeof configurationStyle];
-  }, [siteColor]);
+  const selectLanguage = (language: Language) => {
+    setLanguage(language);
+  };
+
+  useEffect(() => {
+    const userLanguage = navigator.language.split("-")[0].toUpperCase();
+
+    setLanguage(
+      userLanguage === "ES" || userLanguage === "EN" ? userLanguage : "ES"
+    );
+  }, []);
 
   const value = {
-    siteColor,
-    setSiteColor,
-    colorTheme,
+    language,
+    selectLanguage,
   };
 
   return (

@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 import { SectionLayout } from "../layout/SectionLayout";
-import { projects } from "../mocks/projects";
+
+import { siteTexts } from "../i18n/siteTexts";
 import { ProjectCard } from "./ProjectCard";
 
 interface Props {
@@ -7,6 +10,9 @@ interface Props {
 }
 
 export const Projects: React.FC<Props> = ({ projectsRef }) => {
+  const { language } = useContext(GlobalContext);
+  const { projects } = siteTexts[language].components;
+
   return (
     <SectionLayout
       title="Proyectos"
@@ -14,7 +20,7 @@ export const Projects: React.FC<Props> = ({ projectsRef }) => {
       subtitle="Proyectos personales"
     >
       <div className="h-full grid xl:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">
-        {projects.reverse().map((project) => (
+        {projects.items.map((project) => (
           <ProjectCard project={project} key={project.id} />
         ))}
       </div>

@@ -1,13 +1,19 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { SectionLayout } from "../layout/SectionLayout";
 import { ImageMagnifier } from "../utils/magnifier";
 import { Switch } from "./Switch";
+import { GlobalContext } from "../context/GlobalContext";
+import { cvTexts } from "../i18n/cvTexts";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface Props {
   curriculumRef: React.MutableRefObject<null | HTMLDivElement>;
 }
 
 export const Curriculum: React.FC<Props> = ({ curriculumRef }) => {
+  const { language } = useContext(GlobalContext);
+  const breakpoint = useBreakpoint();
+  const { cv } = cvTexts[language];
   const [effect, setEffect] = useState(false);
 
   let bounds;
@@ -51,13 +57,18 @@ export const Curriculum: React.FC<Props> = ({ curriculumRef }) => {
       >
         <>
           {effect ? (
-            <img
-              src="/cv.jpg"
-              ref={inputRef}
-              className="duration-300 ease-out rounded-md max-w-2xl w-[350px] h-[500px] bg-contain bg-center bg-no-repeat"
-            />
+            <>
+              <div
+                ref={inputRef}
+                className={`duration-300 ease-out rounded-md ${cv.style} bg-contain bg-center bg-no-repeat w-[350px] h-[480px] md:w-[450px] md:h-[615px]`}
+              />
+            </>
           ) : (
-            <ImageMagnifier width={"350px"} src="/cv.jpg" />
+            <ImageMagnifier
+              width={breakpoint.is.sm ? "350px" : "450px"}
+              height={breakpoint.is.sm ? "480px" : "615px"}
+              src={language === "ES" ? "/spanish-cv.jpg" : "/english-cv.jpg"}
+            />
           )}
         </>
       </div>

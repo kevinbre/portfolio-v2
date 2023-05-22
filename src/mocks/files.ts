@@ -22,7 +22,7 @@ export const vscodeFolders = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     name: "layout",
     type: "folder",
     files: [
@@ -31,7 +31,7 @@ export const vscodeFolders = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     name: "src",
     type: "file",
     files: [

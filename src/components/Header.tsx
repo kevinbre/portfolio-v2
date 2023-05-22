@@ -2,12 +2,20 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { BsGithub } from "react-icons/bs";
 import { Button } from "./Button";
 import { Vscode } from "./Vscode";
+import { siteTexts } from "../i18n/siteTexts";
+import { GlobalContext } from "../context/GlobalContext";
+import { useContext } from "react";
+import { cvTexts } from "../i18n/cvTexts";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
 }
 
 export const Header: React.FC<Props> = ({ headerRef }) => {
+  const { language } = useContext(GlobalContext);
+  const { header } = siteTexts[language].components;
+  const { downloadLink } = cvTexts[language].cv;
+  const { networks } = siteTexts;
   const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-yellow-400 `;
   return (
     <div
@@ -34,17 +42,14 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
         </div>
 
         <div className="flex gap-2">
-          <Button
-            variant="icon"
-            link="https://www.linkedin.com/in/kevin-bredelis-14a475178/"
-          >
+          <Button variant="icon" link={networks.github}>
             <BsGithub />
           </Button>
-          <Button variant="icon" link="https://github.com/kevinbre">
+          <Button variant="icon" link={networks.linkedin}>
             <AiFillLinkedin />
           </Button>
-          <Button link="https://www.google.com.ar" variant="outline">
-            Descargar CV
+          <Button link={downloadLink} variant="outline">
+            {header.downloadCV}
           </Button>
         </div>
       </div>

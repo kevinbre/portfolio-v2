@@ -6,6 +6,7 @@ interface Props {
   variant?: "outline" | "solid" | "icon";
   color?: "primary" | "secondary";
   link?: string;
+  name?: string;
 }
 
 export const Button: React.FC<Props> = ({
@@ -13,13 +14,13 @@ export const Button: React.FC<Props> = ({
   variant = "solid",
   color = "primary",
   link,
+  name = "button",
 }) => {
-  const { colorTheme } = useContext(GlobalContext);
   const btnColor = {
     primary: {
-      solid: `text-black hover:text-white ${colorTheme.background} ${colorTheme.hover.background}`,
-      outline: `${colorTheme.text} ${colorTheme.hover.text} border-2 ${colorTheme.border} ${colorTheme.hover.border}}`,
-      icon: `${colorTheme.text} ${colorTheme.hover.text} h-9 w-9 text-3xl`,
+      solid: `text-black hover:text-white bg-yellow-400 hover:bg-yellow-600`,
+      outline: `text-yellow-400 hover:text-yellow-400 border-2 border-yellow-400 hover:border-yellow-600`,
+      icon: `text-yellow-400 hover:text-yellow-600 h-9 w-9 text-3xl`,
     },
     secondary: {
       solid: "text-white bg-purple-600",
@@ -35,11 +36,13 @@ export const Button: React.FC<Props> = ({
   return (
     <>
       {link ? (
-        <a href={link} className={classes} target="_blank">
+        <a href={link} className={classes} target="_blank" download={true}>
           {children}
         </a>
       ) : (
-        <button className={classes}>{children}</button>
+        <button className={classes} name={name}>
+          {children}
+        </button>
       )}
     </>
   );
