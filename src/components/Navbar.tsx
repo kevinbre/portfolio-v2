@@ -26,6 +26,7 @@ export const Navbar: React.FC<Props> = ({
   const [openMenu, setOpenMenu] = useState(false);
   const breakpoint = useBreakpoint();
   const { language } = useContext(GlobalContext);
+
   const { navbar } = siteTexts[language].components;
 
   const navigateToRef = (

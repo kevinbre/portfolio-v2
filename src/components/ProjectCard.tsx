@@ -1,6 +1,7 @@
 import { AiFillGithub } from "react-icons/ai";
 import { BiWorld } from "react-icons/bi";
 import { Project } from "../mocks/projects";
+import { Tooltip } from "./Tooltip";
 
 interface Props {
   project: Project;
@@ -23,6 +24,7 @@ const techIcon: { [key: string]: string } = {
   vite: "/icons/vite.svg",
   php: "/icons/php.svg",
   mysql: "/icons/mysql.svg",
+  websocket: "/icons/websocket.svg",
 };
 
 export const ProjectCard: React.FC<Props> = ({ project }) => {
@@ -55,36 +57,45 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
                 >
                   <BiWorld /> Deploy
                 </a>
-                |
               </>
             )}
-            <a
-              href={repository}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110`}
-            >
-              <AiFillGithub />
-              Repo
-            </a>
+            {repository && repository?.length > 0 && deploy.length > 0 && "|"}
+            {repository && repository.length > 0 && (
+              <a
+                href={repository}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110`}
+              >
+                <AiFillGithub />
+                Repo
+              </a>
+            )}
           </div>
         </div>
       </div>
 
-      <div className="project-card__content w-full flex-col flex gap-2">
+      <div className="project-card__content w-full flex-col flex gap-2 h-full">
         <h3 className={`text-yellow-400 font-semibold text-xl`}>{title}</h3>
-        <p>{description}</p>
-        <div className="flex gap-2">
-          <span className={`text-yellow-400`}>Stack</span>
-          <div className="flex gap-4">
-            {technologie.map((tech, index) => (
-              <img
-                src={techIcon[tech]}
-                key={index}
-                alt={`${tech} icon`}
-                width={20}
-              />
-            ))}
+        <div className="flex flex-col justify-between h-full">
+          <p>{description}</p>
+          <div className="flex gap-2">
+            <span className={`text-yellow-400`}>Stack</span>
+            <div className="flex gap-4">
+              {technologie.map((tech, index) => (
+                <Tooltip
+                  trigger={
+                    <img src={techIcon[tech.value]} alt={`${tech.title} icon`} width={20} className="hover:-translate-y-1 transition-all" />
+                  }
+                  key={index}
+                >
+                  <div className="text-white flex items-center gap-2 font-medium">
+                    <img src={techIcon[tech.value]} alt={`${tech.title} icon`} width={20} />
+                    {tech.title}
+                  </div>
+                </Tooltip>
+              ))}
+            </div>
           </div>
         </div>
       </div>

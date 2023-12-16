@@ -6,6 +6,7 @@ import { siteTexts } from "../i18n/siteTexts";
 import { GlobalContext } from "../context/GlobalContext";
 import { useContext } from "react";
 import { cvTexts } from "../i18n/cvTexts";
+import { toast } from "sonner";
 
 interface Props {
   headerRef: React.MutableRefObject<null | HTMLDivElement>;
@@ -16,6 +17,8 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
   const { header } = siteTexts[language].components;
   const { downloadLink } = cvTexts[language].cv;
   const { networks } = siteTexts;
+
+  const promise = () => new Promise((resolve) => setTimeout(resolve, 700));
 
   const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-yellow-400 `;
   return (
@@ -49,7 +52,20 @@ export const Header: React.FC<Props> = ({ headerRef }) => {
           <Button variant="icon" link={networks.linkedin}>
             <AiFillLinkedin />
           </Button>
-          <Button link={downloadLink} variant="outline" download={true}>
+          <Button
+            link={downloadLink}
+            variant="outline"
+            download={true}
+            onClick={() => {
+              toast.promise(promise, {
+                loading: header.downloadPromise,
+                success: () => {
+                  return header.downloadToast;
+                },
+                error: "Error",
+              });
+            }}
+          >
             {header.downloadCV}
           </Button>
         </div>

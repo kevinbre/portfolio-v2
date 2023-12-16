@@ -1,15 +1,17 @@
-import PokemonGame from "/pokedex-game.jpg";
-import Giffy from "/giffy.jpg";
 import ComponentsApp from "/components-app.jpg";
-import RandomFood from "/random-food.jpg";
 import HeroesApp from "/heroes-app.jpg";
-import SellSystem from "/stock-app.jpg";
+import Iochat from "/iochat.jpg";
+import PokemonGame from "/pokedex-game.jpg";
+import RandomFood from "/random-food.jpg";
+import RapidCv from "/rapidcv.jpg";
 
 export const siteTexts = {
   ES: {
     components: {
       header: {
         downloadCV: "Descargar CV",
+        downloadToast: "Se descargó el CV correctamente.",
+        downloadPromise: "Cargando"
       },
       navbar: {
         home: "Inicio",
@@ -28,8 +30,38 @@ export const siteTexts = {
         items: [
           {
             id: 0,
+            title: "IO Chat",
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+              { value: "websocket", title: "SocketIo" },
+              { value: "express", title: "Express" },
+            ],
+            description: "Chat online utilizando socket.io.",
+            image: Iochat,
+            deploy: "https://iochat-production.up.railway.app/",
+          },
+          {
+            id: 1,
+            title: "Rapid CV",
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
+            description: "Web para crear curriculum.",
+            image: RapidCv,
+            deploy: "https://rapidcv.vercel.app/",
+          },
+          {
+            id: 2,
             title: "Random Food",
-            technologie: ["vite", "typescript", "react"],
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description:
               "App creada para elegir un restaurant al azar de un listado.",
             image: RandomFood,
@@ -37,9 +69,13 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/random-food",
           },
           {
-            id: 1,
+            id: 3,
             title: "Components App",
-            technologie: ["vite", "typescript", "react"],
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description:
               "Web creada para dar una charla sobre componentes de React.",
             image: ComponentsApp,
@@ -47,9 +83,13 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/components",
           },
           {
-            id: 2,
+            id: 4,
             title: "Pokedex Game",
-            technologie: ["react", "typescript", "nextjs"],
+            technologie: [
+              { value: "nextjs", title: "Nextjs" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description:
               "Mini juego para capturar Pokemon's y verlos en tu pokedex",
             image: PokemonGame,
@@ -57,34 +97,18 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/pokemon",
           },
           {
-            id: 3,
-            title: "Giffy",
-            technologie: ["javascript", "react"],
-            description:
-              "Aplicación utilizando la api de Giphy para buscar gifs.",
-            image: Giffy,
-            deploy: "https://giffy-iota.vercel.app/",
-            repository: "https://github.com/kevinbre/giffy",
-          },
-          {
-            id: 4,
+            id: 5,
             title: "Heroes App",
-            technologie: ["javascript", "react"],
+            technologie: [
+              { value: "javascript", title: "Javascript" },
+              { value: "react", title: "React" },
+              { value: "redux", title: "Redux" },
+            ],
             description:
               "Aplicación para buscar heroes y villanos y armar un equipo.",
             image: HeroesApp,
             deploy: "",
             repository: "https://github.com/kevinbre/app-heros-react",
-          },
-          {
-            id: 5,
-            title: "Sistema de Ventas",
-            technologie: ["javascript", "php", "mysql"],
-            description:
-              "Sistema para crear stock, realizar ventas y generar facturas.",
-            image: SellSystem,
-            deploy: "",
-            repository: "https://github.com/kevinbre/sistemaventas",
           },
         ],
       },
@@ -92,6 +116,7 @@ export const siteTexts = {
         contact: "Contacto",
         tecnologies: "Tecnologías",
         languages: "Idiomas",
+        effect: "Efecto 3D",
         profile: {
           title: "Perfil",
           description:
@@ -151,6 +176,8 @@ export const siteTexts = {
     components: {
       header: {
         downloadCV: "Download Resume",
+        downloadToast: "The CV was downloaded successfully.",
+        downloadPromise: "Loading"
       },
       navbar: {
         home: "Home",
@@ -169,8 +196,38 @@ export const siteTexts = {
         items: [
           {
             id: 0,
+            title: "IO Chat",
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+              { value: "websocket", title: "SocketIo" },
+              { value: "express", title: "Express" },
+            ],
+            description: "Chat online with socket.io.",
+            image: Iochat,
+            deploy: "https://iochat-production.up.railway.app/",
+          },
+          {
+            id: 1,
+            title: "Rapid CV",
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
+            description: "Website to create resume.",
+            image: RapidCv,
+            deploy: "https://rapidcv.vercel.app/",
+          },
+          {
+            id: 2,
             title: "Random Food",
-            technologie: ["vite", "typescript", "react"],
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description:
               "App created to choose a random restaurant from a list.",
             image: RandomFood,
@@ -178,52 +235,46 @@ export const siteTexts = {
             repository: "https://github.com/kevinbre/random-food",
           },
           {
-            id: 1,
+            id: 3,
             title: "Components App",
-            technologie: ["vite", "typescript", "react"],
+            technologie: [
+              { value: "vite", title: "Vite" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description: "Web created to give a talk about React components.",
             image: ComponentsApp,
             deploy: "https://components-wine.vercel.app/",
             repository: "https://github.com/kevinbre/components",
           },
           {
-            id: 2,
+            id: 4,
             title: "Pokedex Game",
-            technologie: ["react", "typescript", "nextjs"],
+            technologie: [
+              { value: "nextjs", title: "Nextjs" },
+              { value: "typescript", title: "Typescript" },
+              { value: "react", title: "React" },
+            ],
             description:
               "Mini game to capture Pokemon's and see them in your pokedex.",
             image: PokemonGame,
             deploy: "https://pokedex-game-lyart.vercel.app/",
             repository: "https://github.com/kevinbre/pokemon",
           },
+
           {
-            id: 3,
-            title: "Giffy",
-            technologie: ["javascript", "react"],
-            description: "Application using the Giphy api to search for gifs.",
-            image: Giffy,
-            deploy: "https://giffy-iota.vercel.app/",
-            repository: "https://github.com/kevinbre/giffy",
-          },
-          {
-            id: 4,
+            id: 5,
             title: "Heroes App",
-            technologie: ["javascript", "react", "redux"],
+            technologie: [
+              { value: "javascript", title: "Javascript" },
+              { value: "react", title: "React" },
+              { value: "redux", title: "Redux" },
+            ],
             description:
               "Application to search for heroes and villains and build a team.",
             image: HeroesApp,
             deploy: "",
             repository: "https://github.com/kevinbre/app-heros-react",
-          },
-          {
-            id: 5,
-            title: "Sell System",
-            technologie: ["javascript", "php", "mysql"],
-            description:
-              "System to create stock, make sales and generate invoices.",
-            image: SellSystem,
-            deploy: "",
-            repository: "https://github.com/kevinbre/sistemaventas",
           },
         ],
       },
@@ -231,6 +282,7 @@ export const siteTexts = {
         contact: "Contacto",
         tecnologies: "Tecnologías",
         languages: "Idiomas",
+        effect: "3D Effect",
         profile: {
           title: "Perfil",
           description:

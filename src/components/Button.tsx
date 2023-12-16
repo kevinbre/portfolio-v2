@@ -6,6 +6,7 @@ interface Props {
   name?: string;
   download?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 export const Button: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const Button: React.FC<Props> = ({
   name = "button",
   download,
   className,
+  onClick,
 }) => {
   const btnColor = {
     primary: {
@@ -37,11 +39,19 @@ export const Button: React.FC<Props> = ({
   return (
     <>
       {link ? (
-        <a href={link} className={classes} target="_blank" download={download}>
+        <a href={link} className={classes} target="_blank" download={download} onClick={() => {
+          onClick && onClick();
+        }}>
           {children}
         </a>
       ) : (
-        <button className={classes} name={name}>
+        <button
+          className={classes}
+          name={name}
+          onClick={() => {
+            onClick && onClick();
+          }}
+        >
           {children}
         </button>
       )}
