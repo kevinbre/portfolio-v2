@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 32" role="img" aria-label="Material UI">
+  <!-- Official MUI mark geometry: a light left chevron and a darker right one. -->
+  <path fill="#00B0FF" d="M0 22.15V4.6L15.19 13.4v5.85L5.06 13.4v11.7L0 22.15Z"/>
+  <path fill="#0081CB" d="M15.19 13.4 30.37 4.6v17.55l-10.12 5.85v-5.85l5.06-2.92v-5.85l-10.12 5.85V13.4Z"/>
+  <path fill="#00B0FF" d="M20.25 33.85v-5.85l10.12-5.85v5.85l-10.12 5.85Z"/>
+</svg>

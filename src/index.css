@@ -1,56 +1,214 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Design tokens, calibrated against vite.dev: a near-black flat
+   background, white type, and violet used sparingly as an accent
+   (glowing borders, hairlines, blooms) rather than as fill.
+--------------------------------------------------------------- */
+@theme {
+  /* Surfaces */
+  --color-void: #0b0b0e;
+  --color-abyss: #101014;
+  --color-surface: #16161b;
+  --color-raised: #1d1d24;
+  /* Hairlines: the structural grid vite.dev draws between blocks. */
+  --color-line: #26262e;
+  --color-line-strong: #33333d;
 
-@layer {
-    .scrollbar::-webkit-scrollbar {
-        width: 12px;
-    height: 12px;
+  /* Text — high contrast, no tinting */
+  --color-fg: #ffffff;
+  --color-muted: #a5a5b0;
+  --color-faint: #6e6e7a;
 
-    }
-        
-    .scrollbar::-webkit-scrollbar-track {
-        background: #323232;
-    }
+  /* Accent: Vite violet */
+  --color-brand: #7c3aed;
+  --color-brand-bright: #a855f7;
+  --color-brand-dim: #5b21b6;
+  /* Vite's yellow, kept for rare highlights only. */
+  --color-accent: #ffd76e;
+  --color-term: #41d18d;
 
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
 
-    .scrollbar::-webkit-scrollbar-thumb {
-        background-color: #606060;  
-    }
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #808080;
-    }
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* The fixed navbar must not cover anchored section headings. */
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    .scrollbar::-webkit-scrollbar-corner {
-        background-color: #606060;
-    }
+  body {
+    background-color: var(--color-void);
+    color: var(--color-fg);
+    /* Sans by default, like vite.dev; mono is reserved for code. */
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
+  /* Vite's headings are tight and slightly negative-tracked. */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
 
-    body::-webkit-scrollbar {
-        width: 12px;
-        height: 12px;
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-brand) 50%, transparent);
+    color: var(--color-fg);
+  }
 
-    }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-bright);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 
-    body::-webkit-scrollbar-track {
-        background: #323232;
-    }
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 99px;
+    border: 3px solid var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-faint);
+  }
+}
 
+@layer utilities {
+  /* The signature Vite button: violet outline with an outer bloom. */
+  .glow-outline {
+    border: 1px solid var(--color-brand-bright);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-brand) 30%, transparent),
+      0 0 24px -4px color-mix(in oklab, var(--color-brand-bright) 75%, transparent),
+      inset 0 0 18px -8px color-mix(in oklab, var(--color-brand-bright) 60%, transparent);
+  }
 
-    body::-webkit-scrollbar-thumb {
-        background-color: #606060;  
-    }
+  /* Used behind hero art and the CTA band. */
+  .bloom {
+    box-shadow: 0 0 90px -10px color-mix(in oklab, var(--color-brand) 55%, transparent);
+  }
 
-    body::-webkit-scrollbar-thumb:hover {
-        background: #808080;
-    }
+  /* Structural hairlines, as on vite.dev's feature grid. */
+  .rule-x {
+    border-inline: 1px solid var(--color-line);
+  }
+  .rule-y {
+    border-block: 1px solid var(--color-line);
+  }
 
-    body::-webkit-scrollbar-corner {
-        background-color: #606060;
-    }
+  .grid-bg {
+    background-image: linear-gradient(
+        to right,
+        color-mix(in oklab, var(--color-line) 70%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-line) 70%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 64px 64px;
+  }
+
+  /* Reserved for the single place a gradient is warranted: the CTA band. */
+  .text-gradient {
+    background-image: linear-gradient(
+      120deg,
+      var(--color-brand-bright) 5%,
+      var(--color-accent) 95%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 
+/* Hero entrance. CSS-driven so content is visible without JS. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
+.rise {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.rise-1 {
+  animation-delay: 0.08s;
+}
+.rise-2 {
+  animation-delay: 0.16s;
+}
+.rise-3 {
+  animation-delay: 0.24s;
+}
+.rise-4 {
+  animation-delay: 0.32s;
+}
+
+/* --- Ambient motion -------------------------------------------------- */
+
+/* Slow vertical drift, as on the floating plates of vite.dev's hero. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* The violet edge glow swelling and settling. */
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-brand) 30%, transparent),
+      0 0 22px -6px color-mix(in oklab, var(--color-brand-bright) 60%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-brand) 45%, transparent),
+      0 0 38px -4px color-mix(in oklab, var(--color-brand-bright) 90%, transparent);
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4.5s ease-in-out infinite;
+}

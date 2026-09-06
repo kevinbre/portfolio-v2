@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Electron">
+  <g fill="none" stroke="#9FEAF9" stroke-width="1.6">
+    <ellipse cx="16" cy="16" rx="14" ry="6.2" transform="rotate(30 16 16)"/>
+    <ellipse cx="16" cy="16" rx="14" ry="6.2" transform="rotate(-30 16 16)"/>
+  </g>
+  <circle cx="16" cy="16" r="3.1" fill="#9FEAF9"/>
+</svg>
