@@ -15,7 +15,7 @@ export const projects: Project[] = [
       ES: "SaaS para estudios jurídicos: expedientes, vencimientos, clientes y documentos en un solo lugar, con un asistente de IA que responde citando los expedientes propios.",
       EN: "SaaS for law firms: cases, deadlines, clients and documents in one place, with an AI assistant that answers by citing the firm's own case files.",
     },
-    image: "/projects/juriadica.jpg",
+    image: "/projects/juriadica.webp",
     deploy: "", // TODO(kevin): URL pública si la tiene
     privateRepo: true,
     stack: [
@@ -34,7 +34,7 @@ export const projects: Project[] = [
       ES: "Gestión para complejos deportivos: calendario de canchas, reservas, socios, cobros y reportes en un mismo panel.",
       EN: "Management for sports venues: court calendar, bookings, members, payments and reports in a single dashboard.",
     },
-    image: "/projects/gerix.jpg",
+    image: "/projects/gerix.webp",
     deploy: "", // TODO(kevin)
     privateRepo: true,
     stack: [
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       ES: "Plataforma de eventos: invitaciones digitales, asignación de mesas y álbumes compartidos, de casamientos a cumpleaños.",
       EN: "Event platform: digital invitations, table seating and shared albums, from weddings to birthdays.",
     },
-    image: "/projects/lunear.jpg",
+    image: "/projects/lunear.webp",
     deploy: "", // TODO(kevin)
     privateRepo: true,
     stack: [
@@ -69,7 +69,7 @@ export const projects: Project[] = [
       ES: "Tienda de impresión 3D: figuras coleccionables, accesorios TCG y deco, con catálogo, carrito y contacto por WhatsApp.",
       EN: "3D-printing store: collectible figures, TCG accessories and decor, with catalogue, cart and WhatsApp contact.",
     },
-    image: "/projects/tuxedo.jpg",
+    image: "/projects/tuxedo.webp",
     deploy: "", // TODO(kevin)
     privateRepo: true,
     stack: [
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       ES: "Libro físico de casos criminales con pistas impresas en tinta escarlata: la app acompaña el juego, revela pistas con la cámara y puntúa según cuántas usaste.",
       EN: "A physical book of criminal cases with clues printed in scarlet ink: the companion app reveals them with the camera and scores you by how many you used.",
     },
-    image: "/projects/scarlet-files.jpg",
+    image: "/projects/scarlet-files.webp",
     deploy: "", // TODO(kevin)
     repository: "", // TODO(kevin)
     stack: [
@@ -103,7 +103,7 @@ export const projects: Project[] = [
       ES: "Companion app para HeroQuest: lleva los puntos de vida, controla los turnos y suma ambientación sonora. Funciona offline.",
       EN: "HeroQuest companion app: tracks hit points, controls turns and adds atmospheric sound. Works offline.",
     },
-    image: "/projects/hqtracker.jpg",
+    image: "/projects/hqtracker.webp",
     deploy: "", // TODO(kevin)
     repository: "", // TODO(kevin)
     stack: [
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       ES: "Sitio institucional para un estudio jurídico: presentación del equipo, áreas de práctica y contacto directo por WhatsApp.",
       EN: "Website for a law firm: team presentation, practice areas and direct WhatsApp contact.",
     },
-    image: "/projects/estudio-alvarez-rey.jpg",
+    image: "/projects/estudio-alvarez-rey.webp",
     deploy: "", // TODO(kevin)
     privateRepo: true,
     stack: [
