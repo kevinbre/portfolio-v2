@@ -148,16 +148,6 @@
   }
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  /* The row holds four identical copies, so shifting by one quarter lands
-     copy 2 exactly where copy 1 started: the restart is imperceptible. */
-  to {
-    transform: translateX(-25%);
-  }
-}
 
 /* Hero entrance. CSS-driven so content is visible without JS. */
 @keyframes rise {
