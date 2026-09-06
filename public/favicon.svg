@@ -1,12 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kevin Bredelis">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="stem" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
     </linearGradient>
   </defs>
-  <!-- Solid violet tile: at 16px a filled shape reads, an outline does not. -->
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <!-- K, weighted heavily so the strokes survive at tab size. -->
-  <path fill="#0b0b0e" d="M20 15h7.5v14.2L40.2 15H50L36.6 29.6 50.6 49H41L31 34.8l-3.5 3.8V49H20V15Z"/>
+  <!-- A standalone K, like Vite's bolt: no tile, two masses split by a
+       diagonal gap, each on its own violet ramp. -->
+  <path fill="url(#stem)" d="M12 6h12v52H12z"/>
+  <path fill="url(#arm)" d="M56 6 28 32l28 26H41L28 45v-9l1-1L41 6z"/>
 </svg>
