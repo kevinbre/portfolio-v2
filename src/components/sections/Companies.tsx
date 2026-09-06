@@ -93,21 +93,47 @@ export const Companies = () => {
     let last = performance.now();
     let frame = 0;
 
-    /* Width of a single copy: the distance from one copy to the next. */
+    /**
+     * Width of one copy, measured to sub-pixel precision.
+     *
+     * offsetLeft and scrollWidth round to whole pixels. At 1440px the real
+     * width is 1269.45, so wrapping at 1269 dropped 0.45px every lap; that
+     * error piled up until the row visibly snapped, which looked exactly
+     * like the animation restarting. getBoundingClientRect keeps the
+     * fraction, and the leftover is carried over instead of discarded.
+     */
     const copyWidth = () => {
       const tracks = row.querySelectorAll<HTMLElement>("[data-track]");
-      if (tracks.length < 2) return row.scrollWidth / TRACK_COPIES;
-      return tracks[1].offsetLeft - tracks[0].offsetLeft;
+      if (tracks.length < 2) {
+        return row.getBoundingClientRect().width / TRACK_COPIES;
+      }
+      return (
+        tracks[1].getBoundingClientRect().left -
+        tracks[0].getBoundingClientRect().left
+      );
     };
 
     let width = copyWidth();
-    const onResize = () => {
-      width = copyWidth();
+
+    /* Logos are lazy-decoded, so a copy can still be growing on first paint;
+       remeasure once images settle, and whenever the layout changes. */
+    const remeasure = () => {
+      const next = copyWidth();
+      if (next > 0) {
+        width = next;
+        /* Keep the current position inside the new range, or the row would
+           jump the moment the viewport changed. */
+        offset %= width;
+      }
     };
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", remeasure);
+    const observer = new ResizeObserver(remeasure);
+    observer.observe(row);
 
     const tick = (now: number) => {
-      const elapsed = now - last;
+      /* A backgrounded tab stops firing frames; without this cap it would
+         return with a huge elapsed time and lurch forward. */
+      const elapsed = Math.min(now - last, 100);
       last = now;
 
       if (!pausedRef.current && width > 0) {
@@ -120,7 +146,8 @@ export const Companies = () => {
     frame = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", remeasure);
+      observer.disconnect();
     };
   }, []);
 
