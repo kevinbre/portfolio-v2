@@ -18,7 +18,7 @@ export const Hero = () => {
     { text: "kevin bredelis — frontend developer", className: "text-muted" },
     { prompt: "❯", text: "cat stack.json", className: "text-fg" },
     {
-      text: '["react", "typescript", "next.js", "svelte"]',
+      text: '["react", "typescript", "next.js", "nx"]',
       className: "text-brand-bright",
     },
     { prompt: "❯", text: "status --hiring", className: "text-fg" },

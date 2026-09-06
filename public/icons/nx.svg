@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Nx">
+  <!-- Wordmark-style N + x, drawn as plain strokes so it stays legible at 16px. -->
+  <g fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 25V8l10 17V8" />
+    <path d="M21 14l7 11M28 14l-7 11" />
+  </g>
+</svg>

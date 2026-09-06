@@ -55,8 +55,12 @@ export const Experience = () => {
                 </span>
               </div>
 
-              <p className="mt-1 text-sm text-brand-bright">
+              <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-brand-bright">
                 {t(job.position)}
+                <span className="text-faint">·</span>
+                <span className="font-mono text-xs text-faint">
+                  {t(job.location)}
+                </span>
               </p>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                 {t(job.description)}

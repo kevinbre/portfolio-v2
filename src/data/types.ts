@@ -40,6 +40,8 @@ export interface Job {
   id: string;
   company: string;
   position: Localized<string>;
+  /** Ciudad y país, tal como figuran en el CV. */
+  location: Localized<string>;
   start: string;
   /** Omit while it is the current job. */
   end?: string;

@@ -27,6 +27,9 @@ export const techIcons: Record<string, string> = {
   firebase: "/icons/firebase.svg",
   docker: "/icons/docker.svg",
   git: "/icons/git.svg",
+  nx: "/icons/nx.svg",
+  mui: "/icons/mui.svg",
+  css: "/icons/css.svg",
 };
 
 export const getTechIcon = (value: string): string | undefined =>
@@ -53,12 +56,13 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    id: "styling",
-    label: { ES: "Estilos y build", EN: "Styling & build" },
+    id: "architecture",
+    label: { ES: "Arquitectura y estilos", EN: "Architecture & styling" },
     items: [
+      { value: "nx", title: "NX" },
+      { value: "mui", title: "Material UI" },
       { value: "tailwind", title: "Tailwind CSS" },
       { value: "sass", title: "Sass" },
-      { value: "bootstrap", title: "Bootstrap" },
       { value: "vite", title: "Vite" },
     ],
   },
@@ -67,13 +71,12 @@ export const techGroups: TechGroup[] = [
     label: { ES: "Backend y datos", EN: "Backend & data" },
     items: [
       { value: "node", title: "Node.js" },
-      { value: "express", title: "Express" },
       { value: "graphql", title: "GraphQL" },
+      { value: "express", title: "Express" },
       { value: "websocket", title: "Socket.IO" },
-      { value: "php", title: "PHP" },
       { value: "mysql", title: "MySQL" },
       { value: "mongodb", title: "MongoDB" },
-      { value: "firebase", title: "Firebase" },
+      { value: "php", title: "PHP" },
     ],
   },
   {
@@ -82,6 +85,7 @@ export const techGroups: TechGroup[] = [
     items: [
       { value: "git", title: "Git" },
       { value: "docker", title: "Docker" },
+      { value: "firebase", title: "Firebase" },
     ],
   },
 ];

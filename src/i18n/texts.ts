@@ -35,8 +35,8 @@ export const texts = {
     subtitle: t("Quién está del otro lado", "Who is on the other side"),
     /* TODO(kevin): reescribí esto con tus palabras cuando pases el CV. */
     body: t(
-      "Desarrollador frontend con más de 7 años construyendo aplicaciones web. Trabajo principalmente con React, TypeScript y Next.js, y disfruto especialmente de la parte donde una interfaz deja de funcionar y empieza a sentirse bien. Me interesa el detalle: la performance, la accesibilidad y las animaciones que aportan en lugar de estorbar.",
-      "Frontend developer with 7+ years building web applications. I work mostly with React, TypeScript and Next.js, and I particularly enjoy the part where an interface stops merely working and starts feeling right. I care about the details: performance, accessibility, and animation that helps instead of getting in the way."
+      "Desarrollador frontend con más de 8 años construyendo aplicaciones web. Hoy trabajo en Membrane Labs, en una plataforma fintech de activos digitales institucionales, con microfrontends sobre React y TypeScript. Antes pasé por Geopagos, Qualita, Nosis y Dos al Cubo, entre fintech, e-commerce y medios. Me interesa el detalle: la performance, la accesibilidad y las animaciones que aportan en lugar de estorbar.",
+      "Frontend developer with 8+ years building web applications. I currently work at Membrane Labs on an institutional digital-asset fintech platform, with microfrontends built on React and TypeScript. Before that I worked at Geopagos, Qualita, Nosis and Dos al Cubo, across fintech, e-commerce and media. I care about the details: performance, accessibility, and animation that helps instead of getting in the way."
     ),
   },
 

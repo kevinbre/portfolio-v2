@@ -4,9 +4,12 @@ import { useLocale } from "../../hooks/useLocale";
 import { texts } from "../../i18n/texts";
 
 const stats = [
-  { value: "7+", label: { ES: "Años de experiencia", EN: "Years of experience" } },
-  { value: "20+", label: { ES: "Proyectos entregados", EN: "Projects shipped" } },
-  { value: "4", label: { ES: "Equipos", EN: "Teams" } },
+  { value: "8+", label: { ES: "Años de experiencia", EN: "Years of experience" } },
+  { value: "6", label: { ES: "Empresas", EN: "Companies" } },
+  {
+    value: "Lic.",
+    label: { ES: "en Sistemas", EN: "in Systems" },
+  },
 ];
 
 export const About = () => {
