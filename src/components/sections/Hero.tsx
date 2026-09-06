@@ -15,7 +15,7 @@ export const Hero = () => {
 
   const terminalLines = [
     { prompt: "❯", text: "whoami", className: "text-fg" },
-    { text: "kevin bredelis — frontend developer", className: "text-muted" },
+    { text: "kevin bredelis — software engineer", className: "text-muted" },
     { prompt: "❯", text: "cat stack.json", className: "text-fg" },
     {
       text: '["react", "typescript", "next.js", "nx"]',

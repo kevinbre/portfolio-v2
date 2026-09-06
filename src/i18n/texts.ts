@@ -17,7 +17,7 @@ export const texts = {
   },
 
   hero: {
-    role: t("Frontend Developer", "Frontend Developer"),
+    role: t("Software Engineer", "Software Engineer"),
     status: t("Disponible para proyectos", "Available for work"),
     tagline: t(
       "Construyo interfaces rápidas y prolijas para la web.",
@@ -35,8 +35,8 @@ export const texts = {
     subtitle: t("Quién está del otro lado", "Who is on the other side"),
     /* TODO(kevin): reescribí esto con tus palabras cuando pases el CV. */
     body: t(
-      "Desarrollador frontend con más de 8 años construyendo aplicaciones web. Hoy trabajo en Membrane Labs, en una plataforma fintech de activos digitales institucionales, con microfrontends sobre React y TypeScript. Antes pasé por Geopagos, Qualita, Nosis y Dos al Cubo, entre fintech, e-commerce y medios. Me interesa el detalle: la performance, la accesibilidad y las animaciones que aportan en lugar de estorbar.",
-      "Frontend developer with 8+ years building web applications. I currently work at Membrane Labs on an institutional digital-asset fintech platform, with microfrontends built on React and TypeScript. Before that I worked at Geopagos, Qualita, Nosis and Dos al Cubo, across fintech, e-commerce and media. I care about the details: performance, accessibility, and animation that helps instead of getting in the way."
+      "Software Engineer en una fintech de activos digitales institucionales. Llevo el ownership del frontend de punta a punta —de la arquitectura y las decisiones de UX hasta la entrega a producción—, con contribuciones en backend, AWS y CI/CD. Antes pasé por Geopagos, Qualita, Nosis y Dos al Cubo, entre fintech, e-commerce y medios. Me interesa el detalle: la performance, la accesibilidad y las animaciones que aportan en lugar de estorbar.",
+      "Software Engineer at an institutional digital-asset fintech. I own the frontend end to end — from architecture and UX decisions through to production delivery — with contributions across backend, AWS and CI/CD. Before that I worked at Geopagos, Qualita, Nosis and Dos al Cubo, across fintech, e-commerce and media. I care about the details: performance, accessibility, and animation that helps instead of getting in the way."
     ),
   },
 
@@ -95,7 +95,7 @@ export const links = {
   whatsapp: "https://wa.me/5493415462966",
   email: "bredeliskev@gmail.com",
   cv: {
-    ES: "/KevinBredelis-FrontendDeveloper-ES.pdf",
-    EN: "/KevinBredelis-FrontendDeveloper-EN.pdf",
+    ES: "/CV-Kevin-Bredelis-ESP.pdf",
+    EN: "/CV-Kevin-Bredelis-EN.pdf",
   },
 } as const;
