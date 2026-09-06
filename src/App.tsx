@@ -1,35 +1,37 @@
-import { useRef } from "react";
 import { Toaster } from "sonner";
-import { Curriculum } from "./components/Curriculum";
-import { Header } from "./components/Header";
-import { Knowledge } from "./components/Knowledge";
-import { Navbar } from "./components/Navbar";
-import { Projects } from "./components/Projects";
-import { MainLayout } from "./layout/MainLayout";
+import { Backdrop } from "./components/ui/Backdrop";
+import { Navbar } from "./components/ui/Navbar";
+import { Hero } from "./components/sections/Hero";
+import { Companies } from "./components/sections/Companies";
+import { About } from "./components/sections/About";
+import { Stack } from "./components/sections/Stack";
+import { Experience } from "./components/sections/Experience";
+import { Projects } from "./components/sections/Projects";
+import { Contact } from "./components/sections/Contact";
 
-export const App = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const knowledgeRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const curriculumRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <>
-      <MainLayout footerRef={footerRef}>
-        <Navbar
-          headerRef={headerRef}
-          knowledgeRef={knowledgeRef}
-          projectsRef={projectsRef}
-          curriculumRef={curriculumRef}
-          footerRef={footerRef}
-        />
-        <Header headerRef={headerRef} />
-        <Knowledge knowledgeRef={knowledgeRef} />
-        <Projects projectsRef={projectsRef} />
-        <Curriculum curriculumRef={curriculumRef} />
-      <Toaster richColors position="top-center"/>
-      </MainLayout>
-    </>
-  );
-};
+export const App = () => (
+  <>
+    <Backdrop />
+    <Navbar />
+    <main>
+      <Hero />
+      <Companies />
+      <About />
+      <Stack />
+      <Experience />
+      <Projects />
+      <Contact />
+    </main>
+    <Toaster
+      theme="dark"
+      position="bottom-right"
+      toastOptions={{
+        style: {
+          background: "var(--color-surface)",
+          border: "1px solid var(--color-line)",
+          color: "var(--color-fg)",
+        },
+      }}
+    />
+  </>
+);

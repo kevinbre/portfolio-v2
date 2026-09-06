@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { App } from "./App.tsx";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+import { LocaleProvider } from "./context/LocaleProvider";
 import "./index.css";
-import { GlobalProvider } from "./context/GlobalContext.tsx";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <GlobalProvider>
-    <React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <LocaleProvider>
       <App />
-    </React.StrictMode>
-  </GlobalProvider>
+    </LocaleProvider>
+  </StrictMode>
 );
