@@ -2,29 +2,59 @@ import { useEffect, useState } from "react";
 
 /**
  * Highlights the nav item for whichever section is currently in view.
- * Uses a band across the upper-middle of the viewport so the active item
- * changes when a section actually takes over the screen.
+ *
+ * Uses scroll position rather than IntersectionObserver: an observer band
+ * across the upper viewport never matches the last section, because the page
+ * runs out of scroll before that section reaches the band — so "Contact"
+ * could never light up.
  */
 export const useActiveSection = (ids: string[]) => {
   const [active, setActive] = useState(ids[0] ?? "");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5, 1] }
-    );
+    if (ids.length === 0) return;
 
-    const nodes = ids
-      .map((id) => document.getElementById(id))
-      .filter((node): node is HTMLElement => node !== null);
-    nodes.forEach((node) => observer.observe(node));
+    let frame = 0;
 
-    return () => observer.disconnect();
+    const update = () => {
+      frame = 0;
+
+      const scrollY = window.scrollY;
+      const viewport = window.innerHeight;
+      /* Aim a third of the way down: what the reader is actually looking at. */
+      const probe = scrollY + viewport * 0.34;
+
+      /* At the very bottom no further scrolling is possible, so the last
+         section wins outright — otherwise a short footer never activates. */
+      const atBottom =
+        scrollY + viewport >= document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        setActive(ids[ids.length - 1]);
+        return;
+      }
+
+      let current = ids[0];
+      for (const id of ids) {
+        const node = document.getElementById(id);
+        if (!node) continue;
+        if (node.getBoundingClientRect().top + scrollY <= probe) current = id;
+      }
+      setActive(current);
+    };
+
+    /* Coalesce scroll events into one measurement per frame. */
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [ids]);
 
   return active;

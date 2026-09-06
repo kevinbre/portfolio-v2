@@ -21,6 +21,7 @@ const CompanyLogo = ({ company }: { company: Company }) => {
       alt={company.name}
       loading="lazy"
       decoding="async"
+      draggable={false}
       onError={() => setFailed(true)}
       /* Dark logos are forced to flat white; the rest keep their own colour.
          brightness-0 crushes them to black first so invert lands on pure white. */
@@ -32,21 +33,16 @@ const CompanyLogo = ({ company }: { company: Company }) => {
 };
 
 /**
- * How many copies of the list to render. The row must stay full even on
- * wide screens while one copy is sliding out, so this needs to cover more
+ * Copies of the list laid end to end. The row must stay full on a wide
+ * screen while the first copy is still sliding out, so this covers more
  * than twice the widest viewport we care about.
  */
 const TRACK_COPIES = 4;
 
-/**
- * One full pass of the logo list. Two of these sit side by side and both
- * slide left by exactly their own width, so as the first exits the second
- * has already taken its place — the loop has no seam and cannot drift.
- */
 const Track = ({ ariaHidden }: { ariaHidden?: boolean }) => (
   <div
     aria-hidden={ariaHidden}
-    className="flex shrink-0 animate-[marquee_38s_linear_infinite] items-center gap-16 pr-16 sm:gap-20 sm:pr-20"
+    className="flex shrink-0 items-center gap-16 pr-16 sm:gap-20 sm:pr-20"
   >
     {companies.map((company) => {
       const logo = <CompanyLogo company={company} />;
@@ -82,11 +78,22 @@ export const Companies = () => {
         {t(texts.work.trustedBy)}
       </p>
 
-      <div className="group relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        {/* Enough copies to span any viewport; only the first is announced. */}
-        {Array.from({ length: TRACK_COPIES }, (_, i) => (
-          <Track key={i} ariaHidden={i > 0} />
-        ))}
+      <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        {/*
+          One moving element holding every copy, shifted by the width of a
+          single copy (25% of four). When it snaps back, copy 2 is exactly
+          where copy 1 was, so the restart is invisible — animating each
+          track on its own made the last one visibly jump to the front.
+
+          Hovering pauses the row: clicking a moving logo used to open a
+          different one, because the element under the cursor changed
+          between press and release.
+        */}
+        <div className="flex w-max animate-[marquee_38s_linear_infinite] hover:[animation-play-state:paused]">
+          {Array.from({ length: TRACK_COPIES }, (_, i) => (
+            <Track key={i} ariaHidden={i > 0} />
+          ))}
+        </div>
       </div>
     </section>
   );

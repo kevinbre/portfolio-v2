@@ -152,10 +152,10 @@
   from {
     transform: translateX(0);
   }
-  /* Each track shifts by its own full width; its twin is already in place,
-     so the loop restarts on an identical frame and never drifts. */
+  /* The row holds four identical copies, so shifting by one quarter lands
+     copy 2 exactly where copy 1 started: the restart is imperceptible. */
   to {
-    transform: translateX(-100%);
+    transform: translateX(-25%);
   }
 }
 
