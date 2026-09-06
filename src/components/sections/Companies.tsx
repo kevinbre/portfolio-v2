@@ -31,11 +31,50 @@ const CompanyLogo = ({ company }: { company: Company }) => {
   );
 };
 
+/**
+ * How many copies of the list to render. The row must stay full even on
+ * wide screens while one copy is sliding out, so this needs to cover more
+ * than twice the widest viewport we care about.
+ */
+const TRACK_COPIES = 4;
+
+/**
+ * One full pass of the logo list. Two of these sit side by side and both
+ * slide left by exactly their own width, so as the first exits the second
+ * has already taken its place — the loop has no seam and cannot drift.
+ */
+const Track = ({ ariaHidden }: { ariaHidden?: boolean }) => (
+  <div
+    aria-hidden={ariaHidden}
+    className="flex shrink-0 animate-[marquee_38s_linear_infinite] items-center gap-16 pr-16 sm:gap-20 sm:pr-20"
+  >
+    {companies.map((company) => {
+      const logo = <CompanyLogo company={company} />;
+      return (
+        <div
+          key={company.id}
+          className="flex shrink-0 items-center text-muted opacity-55 transition-opacity duration-300 hover:opacity-100"
+        >
+          {company.url ? (
+            <a
+              href={company.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={ariaHidden ? -1 : 0}
+            >
+              {logo}
+            </a>
+          ) : (
+            logo
+          )}
+        </div>
+      );
+    })}
+  </div>
+);
+
 export const Companies = () => {
   const { t } = useLocale();
-
-  /* Duplicated once so the marquee can loop without a visible seam. */
-  const track = [...companies, ...companies];
 
   return (
     <section className="border-y border-line py-14">
@@ -43,33 +82,11 @@ export const Companies = () => {
         {t(texts.work.trustedBy)}
       </p>
 
-      <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        <div className="flex w-max animate-[marquee_36s_linear_infinite] items-center gap-16 px-8 group-hover:[animation-play-state:paused] sm:gap-20">
-          {track.map((company, i) => {
-            const duplicate = i >= companies.length;
-            const logo = <CompanyLogo company={company} />;
-            return (
-              <div
-                key={`${company.id}-${i}`}
-                aria-hidden={duplicate}
-                className="flex shrink-0 items-center text-muted opacity-55 transition-opacity duration-300 hover:opacity-100"
-              >
-                {company.url ? (
-                  <a
-                    href={company.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    tabIndex={duplicate ? -1 : 0}
-                  >
-                    {logo}
-                  </a>
-                ) : (
-                  logo
-                )}
-              </div>
-            );
-          })}
-        </div>
+      <div className="group relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        {/* Enough copies to span any viewport; only the first is announced. */}
+        {Array.from({ length: TRACK_COPIES }, (_, i) => (
+          <Track key={i} ariaHidden={i > 0} />
+        ))}
       </div>
     </section>
   );

@@ -62,23 +62,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "tutorar",
-    title: "tutor.ar",
-    tag: { ES: "Producto", EN: "Product" },
-    description: {
-      ES: "Marketplace que conecta alumnos con profesores particulares: búsqueda por materia, perfiles y reseñas, clases 100% online.",
-      EN: "Marketplace connecting students with private teachers: search by subject, profiles and reviews, fully online classes.",
-    },
-    image: "/projects/tutorar.jpg",
-    deploy: "", // TODO(kevin)
-    privateRepo: true,
-    stack: [
-      { value: "nextjs", title: "Next.js" },
-      { value: "typescript", title: "TypeScript" },
-      { value: "tailwind", title: "Tailwind CSS" },
-    ],
-  },
-  {
     id: "tuxedo",
     title: "Tuxedo",
     tag: { ES: "E-commerce", EN: "E-commerce" },

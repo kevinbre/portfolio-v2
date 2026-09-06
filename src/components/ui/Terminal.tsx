@@ -58,7 +58,7 @@ export const Terminal = ({ lines }: { lines: Line[] }) => {
   );
 
   return (
-    <div className="bloom overflow-hidden rounded-xl border border-line bg-abyss/90 shadow-2xl backdrop-blur-sm">
+    <div className="animate-breathe overflow-hidden rounded-xl border border-line bg-abyss/90 backdrop-blur-sm">
       {/* Window chrome */}
       <div className="flex items-center gap-2 border-b border-line px-4 py-3">
         <span className="size-3 rounded-full bg-[#ff5f57]" />

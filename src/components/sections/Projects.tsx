@@ -1,4 +1,4 @@
-import { Reveal } from "../ui/Reveal";
+import { RevealGroup } from "../ui/RevealGroup";
 import { SectionHeading } from "../ui/SectionHeading";
 import { ProjectCard } from "../ui/ProjectCard";
 import { publishedProjects } from "../../data/projects";
@@ -9,7 +9,10 @@ export const Projects = () => {
   const { t } = useLocale();
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl border-x border-t border-line px-6 py-20 sm:py-24">
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl border-x border-t border-line px-6 py-20 sm:py-24"
+    >
       <SectionHeading
         index="04"
         title={t(texts.projects.title)}
@@ -19,16 +22,17 @@ export const Projects = () => {
       {publishedProjects.length === 0 ? (
         <p className="text-sm text-faint">{t(texts.projects.empty)}</p>
       ) : (
-        <div className="grid grid-flow-dense auto-rows-[minmax(0,auto)] gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        /* Featured cards span two columns; grid-flow-dense backfills the row. */
+        <div className="grid grid-flow-dense gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {publishedProjects.map((project, i) => (
-            /* Featured cards span two columns; grid-flow-dense backfills the row. */
-            <Reveal
+            <RevealGroup
               key={project.id}
-              delay={(i % 3) * 0.07}
+              delay={(i % 3) * 0.08}
               className={`h-full ${project.featured ? "sm:col-span-2" : ""}`}
+              childClassName="h-full"
             >
               <ProjectCard project={project} />
-            </Reveal>
+            </RevealGroup>
           ))}
         </div>
       )}

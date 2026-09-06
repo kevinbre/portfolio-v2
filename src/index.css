@@ -152,9 +152,10 @@
   from {
     transform: translateX(0);
   }
-  /* The track holds two copies, so half a loop is one seamless cycle. */
+  /* Each track shifts by its own full width; its twin is already in place,
+     so the loop restarts on an identical frame and never drifts. */
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -184,4 +185,40 @@
 }
 .rise-4 {
   animation-delay: 0.32s;
+}
+
+/* --- Ambient motion -------------------------------------------------- */
+
+/* Slow vertical drift, as on the floating plates of vite.dev's hero. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* The violet edge glow swelling and settling. */
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-brand) 30%, transparent),
+      0 0 22px -6px color-mix(in oklab, var(--color-brand-bright) 60%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-brand) 45%, transparent),
+      0 0 38px -4px color-mix(in oklab, var(--color-brand-bright) 90%, transparent);
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4.5s ease-in-out infinite;
 }

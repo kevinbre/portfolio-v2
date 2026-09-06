@@ -37,7 +37,7 @@ export const Experience = () => {
 
         {experience.map((job, i) => (
           <li key={job.id} className="relative pb-12 pl-8 last:pb-0">
-            <Reveal delay={i * 0.05}>
+            <Reveal delay={i * 0.09}>
               <span
                 aria-hidden
                 className={`absolute top-1.5 left-0 size-[15px] rounded-full border-2 ${

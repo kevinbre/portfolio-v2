@@ -1,4 +1,5 @@
 import { Reveal } from "../ui/Reveal";
+import { RevealGroup } from "../ui/RevealGroup";
 import { SectionHeading } from "../ui/SectionHeading";
 import { getTechIcon, techGroups } from "../../data/tech";
 import { useLocale } from "../../hooks/useLocale";
@@ -22,11 +23,11 @@ export const Stack = () => {
               <h3 className="mb-5 font-mono text-xs tracking-[0.16em] text-faint uppercase">
                 {t(group.label)}
               </h3>
-              <ul className="flex flex-wrap gap-2.5">
-                {group.items.map((item) => {
+              <RevealGroup stagger={0.045} className="flex flex-wrap gap-2.5">
+                {group.items.map((item, i) => {
                   const icon = getTechIcon(item.value);
                   return (
-                    <li
+                    <div
                       key={item.value}
                       className="group flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-sm text-muted transition-colors hover:border-brand/50 hover:text-fg"
                     >
@@ -36,14 +37,15 @@ export const Stack = () => {
                           alt=""
                           aria-hidden
                           loading="lazy"
-                          className="size-4 transition-transform duration-200 group-hover:scale-110"
+                          className="animate-float size-4 transition-transform duration-200 group-hover:scale-110"
+                          style={{ animationDelay: `${(i * 0.4 + item.value.length * 0.12).toFixed(2)}s` }}
                         />
                       )}
                       {item.title}
-                    </li>
+                    </div>
                   );
                 })}
-              </ul>
+              </RevealGroup>
             </div>
           </Reveal>
         ))}
