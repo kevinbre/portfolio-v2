@@ -9,8 +9,8 @@ export const experience: Job[] = [
     location: { ES: "Nueva York, EE.UU. · Remoto", EN: "New York, USA · Remote" },
     start: "2024-10",
     description: {
-      ES: "Ownership del frontend de los dominios de Loans y Collateral: defino la arquitectura de microfrontends y las decisiones de UX, y entrego features completas a producción —frontend, endpoints sobre PostgreSQL, releases progresivas con feature flags y CI/CD en AWS.",
-      EN: "I own the frontend of the Loans and Collateral domains: I define the microfrontend architecture and the UX decisions, and ship complete features to production — frontend, endpoints over PostgreSQL, progressive rollouts behind feature flags and CI/CD on AWS.",
+      ES: "Manejo el frontend de los dominios de Loans y Collateral. Defino la arquitectura de microfrontends y las decisiones de UX, y llevo features completas hasta producción: frontend, endpoints sobre PostgreSQL, releases progresivas con feature flags y CI/CD en AWS.",
+      EN: "I run the frontend of the Loans and Collateral domains. I define the microfrontend architecture and the UX decisions, and take complete features through to production: frontend, endpoints over PostgreSQL, progressive rollouts behind feature flags and CI/CD on AWS.",
     },
     stack: ["react", "typescript", "nx", "mui", "postgresql", "aws"],
   },
@@ -61,8 +61,8 @@ export const experience: Job[] = [
     start: "2021-12",
     end: "2022-11",
     description: {
-      ES: "Alta de nuevos clientes en el CMS Thinkindot para medios digitales —diarios, radios y TV—, con soporte de sistemas productivos, maquetación y tareas de backend en PHP.",
-      EN: "Onboarded new clients onto the Thinkindot CMS for digital media — newspapers, radio and TV — with production support, markup and backend work in PHP.",
+      ES: "Alta de nuevos clientes en el CMS Thinkindot para medios digitales: diarios, radios y TV. Soporte de sistemas productivos, maquetación y tareas de backend en PHP.",
+      EN: "Onboarded new clients onto the Thinkindot CMS for digital media: newspapers, radio and TV. Production support, markup and backend work in PHP.",
     },
     stack: ["php", "sass", "javascript"],
   },

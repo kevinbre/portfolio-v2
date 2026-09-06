@@ -33,10 +33,9 @@ export const texts = {
   about: {
     title: t("Sobre mí", "About me"),
     subtitle: t("Quién está del otro lado", "Who is on the other side"),
-    /* TODO(kevin): reescribí esto con tus palabras cuando pases el CV. */
     body: t(
-      "Software Engineer en una fintech de activos digitales institucionales. Llevo el ownership del frontend de punta a punta —de la arquitectura y las decisiones de UX hasta la entrega a producción—, con contribuciones en backend, AWS y CI/CD. Antes pasé por Geopagos, Qualita, Nosis y Dos al Cubo, entre fintech, e-commerce y medios. Me interesa el detalle: la performance, la accesibilidad y las animaciones que aportan en lugar de estorbar.",
-      "Software Engineer at an institutional digital-asset fintech. I own the frontend end to end — from architecture and UX decisions through to production delivery — with contributions across backend, AWS and CI/CD. Before that I worked at Geopagos, Qualita, Nosis and Dos al Cubo, across fintech, e-commerce and media. I care about the details: performance, accessibility, and animation that helps instead of getting in the way."
+      "Trabajo en Membrane Labs, una fintech de activos digitales institucionales, donde manejo el frontend completo: la arquitectura, las decisiones de UX y lo que sale a producción. También meto mano en backend, AWS y CI/CD. Antes estuve en Geopagos, Qualita, Nosis y Dos al Cubo, entre fintech, e-commerce y medios. Lo que más disfruto es cuando una interfaz deja de solo funcionar y se empieza a sentir bien.",
+      "I work at Membrane Labs, an institutional digital-asset fintech, where I run the frontend end to end: the architecture, the UX calls and what ships to production. I also do a fair amount of backend, AWS and CI/CD. Before that I was at Geopagos, Qualita, Nosis and Dos al Cubo, across fintech, e-commerce and media. What I enjoy most is the point where an interface stops merely working and starts feeling right."
     ),
   },
 
